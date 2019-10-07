@@ -7,6 +7,9 @@ Cola::Cola()
 }
 
 void Cola::insertar(Pasajero* v )
+/*
+ * Inserta un elemento a la cola
+ */
 {
     pnodo nuevo;
     nuevo = new NodoCola(v);
@@ -18,6 +21,9 @@ void Cola::insertar(Pasajero* v )
 }
 
 int Cola::eliminar()
+/*
+ * Elimina el primer elemento de la cola
+ */
 {
     pnodo nodo;
     Pasajero* v;
@@ -33,6 +39,9 @@ int Cola::eliminar()
 }
 
 void Cola::mostrar()
+/*
+ * Muestra la cola en su totalidad
+ */
 {
     pnodo aux = primero;
     cout << "Cola: ";
@@ -44,6 +53,9 @@ void Cola::mostrar()
 }
 
 Cola::~Cola()
+/*
+ * Destructor de la cola 
+ */
 {
     while(primero)
         eliminar();
