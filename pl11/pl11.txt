@@ -1,0 +1,1 @@
+./Debug/main.cpp.o ./Debug/Cola.cpp.o ./Debug/NodoCola.cpp.o   
