@@ -1,5 +1,6 @@
 #ifndef NODOCOLA_HPP
 #define NODOCOLA_HPP
+#include <Pasajero.hpp>
 
 #include <iostream>
 using namespace std;
@@ -7,11 +8,11 @@ using namespace std;
 class NodoCola
 {
 public:
-	NodoCola(int v, NodoCola* sig = NULL);
+	NodoCola(Pasajero* valor, NodoCola* sig = NULL);
 	~NodoCola();
 	
 private:
-    int valor;
+    Pasajero* valor;
     NodoCola* siguiente;
     
     friend class Cola;

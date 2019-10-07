@@ -8,7 +8,7 @@ public:
 	Cola();
 	~Cola();
 	
-	void insertar(int v);
+	void insertar(Pasajero* v);
     int eliminar();
     void mostrar();
 

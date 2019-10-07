@@ -6,7 +6,7 @@ Cola::Cola()
     ultimo = NULL;
 }
 
-void Cola::insertar(int v )
+void Cola::insertar(Pasajero* v )
 {
     pnodo nuevo;
     nuevo = new NodoCola(v);
@@ -20,7 +20,7 @@ void Cola::insertar(int v )
 int Cola::eliminar()
 {
     pnodo nodo;
-    int v;
+    Pasajero* v;
     nodo = primero;
     if (!nodo)
         return 0;
@@ -29,7 +29,7 @@ int Cola::eliminar()
     delete nodo;
     if (!primero)
         ultimo = NULL;
-    return v;
+    return v->getIdentificador();
 }
 
 void Cola::mostrar()
@@ -37,7 +37,7 @@ void Cola::mostrar()
     pnodo aux = primero;
     cout << "Cola: ";
     while(aux) {
-        cout << "-> " << aux->valor;
+        cout << "Pasajero Numero -> " << aux->valor->getIdentificador();
         aux = aux->siguiente;
     }
     cout << endl;
