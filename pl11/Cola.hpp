@@ -12,6 +12,7 @@ public:
     int eliminar();
     void mostrar();
 	int longitudCola();
+	int buscarPrioridad(); 
 
 private:
     pnodo primero, ultimo;

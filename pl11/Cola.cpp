@@ -66,6 +66,22 @@ int Cola::longitudCola()
 	return len;
 }
 
+int Cola::buscarPrioridad() 
+{
+	int priodadMax = 0;
+    pnodo aux = primero;
+    while(aux) {
+        if ( aux->valor->getPrioridad() > priodadMax )
+		{
+			priodadMax = aux->valor->getPrioridad();
+		}
+			
+        aux = aux->siguiente;
+    }
+	cout << "La prioridad maxima de la cola es: " << priodadMax;
+	return priodadMax;
+}
+
 Cola::~Cola()
 /*
  * Destructor de la cola 
