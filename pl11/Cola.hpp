@@ -11,6 +11,7 @@ public:
 	void insertar(Pasajero* v);
     int eliminar();
     void mostrar();
+	int longitudCola();
 
 private:
     pnodo primero, ultimo;

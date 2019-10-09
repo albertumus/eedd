@@ -46,10 +46,24 @@ void Cola::mostrar()
     pnodo aux = primero;
     cout << "Cola: ";
     while(aux) {
-        cout << "Pasajero Numero -> " << aux->valor->getIdentificador();
+        cout << "Pasajero Numero -> " << aux->valor->getIdentificador() << endl;
         aux = aux->siguiente;
     }
     cout << endl;
+}
+
+int Cola::longitudCola()
+/*
+ * Muestra la longitud de la cola
+ */
+{
+	int len = 0;
+    pnodo aux = primero;
+    while(aux) {
+        len++;
+        aux = aux->siguiente;
+    }
+	return len;
 }
 
 Cola::~Cola()

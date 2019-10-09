@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="pl11" Version="10.0.0" InternalType="Console">
   <VirtualDirectory Name="headers-files">
-    <File Name="Box.cpp"/>
     <File Name="Box.hpp"/>
     <File Name="Pasajero.hpp"/>
     <File Name="Cola.hpp"/>
@@ -100,6 +99,7 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="source-files">
+    <File Name="Box.cpp"/>
     <File Name="Pasajero.cpp"/>
     <File Name="Cola.cpp"/>
     <File Name="NodoCola.cpp"/>

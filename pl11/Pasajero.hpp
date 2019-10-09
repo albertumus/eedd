@@ -11,6 +11,7 @@ public:
 	int getPrioridad();
 	int getHoraLlegada();
 	int getDuracion();
+	void cambiarTiempo(int *t);
 	
 private:
 	int identificador, prioridad, horaLlegada, duracion;
