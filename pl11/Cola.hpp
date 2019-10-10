@@ -12,7 +12,8 @@ public:
     int eliminar();
     void mostrar();
 	int longitudCola();
-	int buscarPrioridad(); 
+	int buscarPrioridad();
+	void borrarDeCola(Pasajero *pp, Cola *pc);
 
 private:
     pnodo primero, ultimo;

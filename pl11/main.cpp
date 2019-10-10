@@ -44,16 +44,19 @@ int main(int argc, char **argv)
 	
 	while ( pColaInicial->longitudCola() > 0 ) 
 	{
-	
-		pColaInicial->mostrar();
 		cout << endl;
 		pColaInicial->buscarPrioridad();
 		cout << endl;
 		pColaInicial->eliminar();
 		
 	}
-	pColaInicial->buscarPrioridad();
+	 
+	pColaInicial->mostrar();
+
+	
+
 	cout << endl;
+
 	return 0;
 }
 
@@ -62,7 +65,7 @@ void cambiarCola(Pasajero *p, Cola *colaOrigen, Cola *colaDestino)
  * 
  */ 
 {
-	// Falta elinar de la cola de origin
+	colaOrigen->borrarDeCola(p, colaOrigen);
 	colaDestino->insertar(p);
 }
 
