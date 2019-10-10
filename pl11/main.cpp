@@ -3,19 +3,27 @@
 #include <Box.hpp>
 
 void cambiarCola(Pasajero *p, Cola *c1, Cola *c2);
-
+void serAtendido(Box *box, Pasajero *pp);
 
 int main(int argc, char **argv)
 {
 	Cola colaInicial;
 	Cola* pColaInicial = &colaInicial;
     
-	
 	Cola colaListos;
 	Cola* pColaListos = &colaListos;
 
 	Cola colaFinal;
 	Cola* pColaFinal = &colaFinal;
+	
+	Box box1 = Box(1);
+	Box* pBox1 = &box1;
+	
+	Box box2 = Box(2);
+	Box* pBox2 = &box2;
+	
+	Box box3 = Box(3);
+	Box* pBox3 = &box3;
 	
 	int t = 0;
 	int* pt = &t;
@@ -41,28 +49,33 @@ int main(int argc, char **argv)
 	Pasajero* pasajero9 = new Pasajero(9,4,11,23);
 	colaInicial.insertar(pasajero9);
 	
-	
+	/*
 	while ( pColaInicial->longitudCola() > 0 ) 
 	{
-	
-		pColaInicial->mostrar();
-		cout << endl;
-		pColaInicial->buscarPrioridad();
-		cout << endl;
 		pColaInicial->eliminar();
 		
 	}
-	pColaInicial->buscarPrioridad();
+	 */
+
 	cout << endl;
+
 	return 0;
 }
 
 void cambiarCola(Pasajero *p, Cola *colaOrigen, Cola *colaDestino)
 /*
- * 
+ * Mueve a una persoan de una cola de inicio a otra final 
  */ 
 {
-	// Falta elinar de la cola de origin
+	colaOrigen->borrarDeCola(p, colaOrigen);
 	colaDestino->insertar(p);
+}
+
+void serAtendido(Box *box, Pasajero *pp)
+/*
+ * Mete a una pasajero en un box
+ */ 
+{
+	box->setOcupado(pp);
 }
 

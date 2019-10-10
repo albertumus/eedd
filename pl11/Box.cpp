@@ -1,7 +1,8 @@
 #include "Box.hpp"
 
-Box::Box()
+Box::Box(int id)
 {
+	identificador = id;
 }
 
 bool Box::getOcupado() 
@@ -9,15 +10,21 @@ bool Box::getOcupado()
  * Devuelve el estado de la variable ocupado
  */
 {
-	return ocupado;
+	if ( valor )
+	{
+		return true;
+	} else 
+	{
+		return false;
+	}
 }
 
-void Box::setOcupado(bool i)
+void Box::setOcupado(Pasajero* pp)
 /*
  * Setea el valor de la variable ocupado al valor pasado por parametro
  */
 {
-	ocupado = i;
+	valor = pp;
 }
 
 Box::~Box()

@@ -44,7 +44,7 @@ void Cola::mostrar()
  */
 {
     pnodo aux = primero;
-    cout << "Cola: ";
+    cout << "Cola: " << endl;
     while(aux) {
         cout << "Pasajero Numero -> " << aux->valor->getIdentificador() << endl;
         aux = aux->siguiente;
@@ -66,10 +66,27 @@ int Cola::longitudCola()
 	return len;
 }
 
+Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
+{
+	pnodo aux = primero;
+	Pasajero* auxPasajero;
+	
+	while (aux){
+	//while (aux->longitudCola() > 0 ){
+		if ( aux->valor->getPrioridad() == *prior)
+		{
+			return aux->valor;
+		}
+		
+		aux = aux->siguiente;
+	}
+}
+
 int Cola::buscarPrioridad() 
 {
 	int priodadMax = 0;
     pnodo aux = primero;
+	cout << "Este es el nodo auxiliar que guarda el primero de la cola: " << aux << endl;
     while(aux) {
         if ( aux->valor->getPrioridad() > priodadMax )
 		{
@@ -80,6 +97,27 @@ int Cola::buscarPrioridad()
     }
 	cout << "La prioridad maxima de la cola es: " << priodadMax;
 	return priodadMax;
+}
+
+void Cola::borrarDeCola(Pasajero *pp, Cola *pc)
+/*
+ * Borra de la cola pasada por parámetro el pasajero pasado por parámetro
+ */
+{
+	pnodo aux = primero;
+	Cola auxCola;
+	
+	while (aux){
+	//while (aux->longitudCola() > 0 ){
+		if ( aux->valor->getIdentificador() != pp->getIdentificador() )
+		{
+			auxCola.insertar(aux->valor);
+		}
+		
+		aux = aux->siguiente;
+	}
+	
+	*pc = auxCola;	
 }
 
 Cola::~Cola()

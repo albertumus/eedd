@@ -1,17 +1,19 @@
 #ifndef BOX_HPP
 #define BOX_HPP
+#include "Pasajero.hpp"
 
 class Box
 {
 public:
-	Box();
+	Box( int id );
 	~Box();
 	
-	void setOcupado(bool i);
 	bool getOcupado();
+	void setOcupado(Pasajero* pp);
 
 private:
-	bool ocupado;
+	Pasajero* valor;
+	int identificador;
 
 };
 

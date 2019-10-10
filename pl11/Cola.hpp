@@ -1,6 +1,7 @@
 #ifndef COLA_HPP
 #define COLA_HPP
 #include "NodoCola.hpp"
+#include "Box.hpp"
 
 class Cola
 {
@@ -12,7 +13,9 @@ public:
     int eliminar();
     void mostrar();
 	int longitudCola();
-	int buscarPrioridad(); 
+	int buscarPrioridad();
+	Pasajero* cogerPrimeroPrioridad(int *t, int *prior);
+	void borrarDeCola(Pasajero *pp, Cola *pc);
 
 private:
     pnodo primero, ultimo;
