@@ -3,6 +3,7 @@
 Box::Box(int id)
 {
 	identificador = id;
+	valor = 0;
 }
 
 bool Box::getOcupado() 
@@ -19,11 +20,16 @@ bool Box::getOcupado()
 	}
 }
 
-void Box::setOcupado(Pasajero* pp)
+Pasajero* Box::getValor() 
+{
+	return valor;
+}
+void Box::setPasajeroEnBox(Pasajero* pp)
 /*
  * Setea el valor de la variable ocupado al valor pasado por parametro
  */
 {
+
 	valor = pp;
 }
 

@@ -12,6 +12,7 @@ public:
 	void insertar(Pasajero* v);
     int eliminar();
     void mostrar();
+	void mostrarPrimero();
 	int longitudCola();
 	int buscarPrioridad();
 	Pasajero* cogerPrimeroPrioridad(int *t, int *prior);

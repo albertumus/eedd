@@ -9,7 +9,8 @@ public:
 	~Box();
 	
 	bool getOcupado();
-	void setOcupado(Pasajero* pp);
+	Pasajero* getValor();
+	void setPasajeroEnBox(Pasajero* pp);
 
 private:
 	Pasajero* valor;

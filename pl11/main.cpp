@@ -53,12 +53,29 @@ int main(int argc, char **argv)
 	while ( pColaInicial->longitudCola() > 0 ) 
 	{
 		pColaInicial->eliminar();
-		
 	}
 	 */
+	
+	// Metemos los dos primero en t = 0
+	pColaListos->insertar(pasajero1);
+	pColaListos->insertar(pasajero3);
+	
+	// Buscar prioriad maxima de ese momento
+	*pPrioridad = pColaListos->buscarPrioridad();
+	
+	// recuperamos la posicion de memoria del más prioridad
+	Pasajero* personaMaxPrioridad = pColaListos->cogerPrimeroPrioridad(pt, pPrioridad);
+	
+	// Metemos la persona en el box
+	serAtendido(pBox1, personaMaxPrioridad);
+	
+	// Seteamos la hora a la que ha sido metido y psar CF
+	personaMaxPrioridad->setHoraAtendido(30);
+	cambiarCola(personaMaxPrioridad, pColaListos, pColaFinal);
 
-	cout << endl;
 
+	cout << pBox1->getOcupado() << " " << pBox1->getValor() << endl;
+	cout << pBox2->getOcupado() << " " << pBox2->getValor() << endl;
 	return 0;
 }
 
@@ -76,6 +93,6 @@ void serAtendido(Box *box, Pasajero *pp)
  * Mete a una pasajero en un box
  */ 
 {
-	box->setOcupado(pp);
+	box->setPasajeroEnBox(pp);
 }
 
