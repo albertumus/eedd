@@ -17,6 +17,7 @@ public:
 	int buscarPrioridad();
 	Pasajero* cogerPrimeroPrioridad(int *t, int *prior);
 	void borrarDeCola(Pasajero *pp, Cola *pc);
+    Pasajero* buscarPersonaLlegada( int *t );
 
 private:
     pnodo primero, ultimo;

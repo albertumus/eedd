@@ -58,13 +58,14 @@ int main(int argc, char **argv)
 		pColaInicial->eliminar();
 	}
 	 */
-/*	pasajero1->setHoraAtendido(0);
-	cout << pasajero1->calcularHoraSalida() << endl;
-	comprobarBoxFinalizado(Box);*/
-    colaDeLista(pt, pColaInicial, pColaFinal);
-    pColaInicial->mostrar();
-    cout << endl;
-    pColaFinal->mostrar();
+	pasajero1->setHoraAtendido(0);
+	pasajero2->setHoraAtendido(5);
+	pasajero3->setHoraAtendido(0);
+	serAtendido(pBox1, pasajero1);
+	serAtendido(pBox2, pasajero2);
+	serAtendido(pBox3, pasajero3);
+	comprobarBoxFinalizado(pBox1, pBox2, pBox3, pt);
+	cout << "Se ha movido el puntero de tiempo a " << *pt;
 	return 0;
 }
 
@@ -91,9 +92,25 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
  * a dicho momeneot. Tambien setea el momento de salida de la persona del box en dicho momento.
  */ 
 {
-	int momentoMasCercanoDeSalida = 0; 
-	cout << max(1,2);
+	int momentoMasCercanoDeSalida =  min( box1->getValor()->calcularHoraSalida(), min( box2->getValor()->calcularHoraSalida(), box3->getValor()->calcularHoraSalida()) );
+	cout << "El momento más cercano de salida es: " << momentoMasCercanoDeSalida << endl;
+	*t = momentoMasCercanoDeSalida;
 	
+	if ( box1->getValor()->calcularHoraSalida() == *t )
+	{
+		b
+	}
+	
+	if ( box2->getValor()->calcularHoraSalida() == *t )
+	{
+		box1
+	}
+	
+	if ( box3->getValor()->calcularHoraSalida() == *t )
+	{
+		box1
+	}
+
 }
 
 void colaDeLista( int *t, Cola *colaOrigen, Cola *colaDestino )

@@ -90,7 +90,7 @@ Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
 		aux = aux->siguiente;
 	}
 	
-		
+	return auxPasajero;
 }
 
 int Cola::buscarPrioridad() 
@@ -127,6 +127,23 @@ void Cola::borrarDeCola(Pasajero *pp, Cola *pc)
 	}
 	
 	*pc = auxCola;	
+}
+
+Pasajero* Cola::buscarPersonaLlegada( int *t)
+{
+    Pasajero* auxPasajero = new Pasajero(0,0,0,0);
+    pnodo aux = primero;
+    while ( aux )
+    {
+        if (aux->valor->getHoraLlegada() <= *t )
+        {
+            auxPasajero = aux->valor;
+            return auxPasajero;
+        }
+        aux = aux->siguiente;
+    }
+    
+    return auxPasajero;
 }
 
 Cola::~Cola()
