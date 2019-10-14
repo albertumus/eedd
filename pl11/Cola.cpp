@@ -104,6 +104,21 @@ void Cola::borrarDeCola(Pasajero *pp, Cola *pc)
 	*pc = auxCola;	
 }
 
+Pasajero* Cola::buscarPersonaLlegada(int t) 
+{
+	Pasajero* auxPas = new Pasajero(0,0,0,0);
+    pnodo aux = primero;
+    while(aux) {
+        if ( aux->valor->getHoraLlegada() <= t )
+		{
+			auxPas = aux->valor;
+			return auxPas;
+		}
+        aux = aux->siguiente;
+    }
+	return auxPas;
+}
+
 Cola::~Cola()
 /*
  * Destructor de la cola 

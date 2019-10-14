@@ -14,6 +14,7 @@ public:
 	int longitudCola();
 	int buscarPrioridad();
 	void borrarDeCola(Pasajero *pp, Cola *pc);
+	Pasajero* buscarPersonaLlegada(int t);
 
 private:
     pnodo primero, ultimo;
