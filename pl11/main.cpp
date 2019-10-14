@@ -6,6 +6,7 @@
 void cambiarCola(Pasajero *p, Cola *c1, Cola *c2);
 void serAtendido(Box *box, Pasajero *pp);
 void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t );
+void colaDeLista( int *t, Cola *colaOrigen, Cola *colaDestino );
 
 int main(int argc, char **argv)
 {
@@ -57,11 +58,13 @@ int main(int argc, char **argv)
 		pColaInicial->eliminar();
 	}
 	 */
-	
-	pasajero1->setHoraAtendido(0);
+/*	pasajero1->setHoraAtendido(0);
 	cout << pasajero1->calcularHoraSalida() << endl;
-	comprobarBoxFinalizado(Box);
-	cout << endl;
+	comprobarBoxFinalizado(Box);*/
+    colaDeLista(pt, pColaInicial, pColaFinal);
+    pColaInicial->mostrar();
+    cout << endl;
+    pColaFinal->mostrar();
 	return 0;
 }
 
@@ -93,3 +96,15 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
 	
 }
 
+void colaDeLista( int *t, Cola *colaOrigen, Cola *colaDestino )
+{
+    Pasajero* pasajeroLlegada = colaOrigen->buscarPersonaLlegada( t );
+	cout << pasajeroLlegada->getIdentificador();
+	
+	while ( pasajeroLlegada->getIdentificador() != 0) {
+		cambiarCola(pasajeroLlegada, colaOrigen, colaDestino);
+		pasajeroLlegada = colaOrigen->buscarPersonaLlegada(t);
+		cout << pasajeroLlegada->getIdentificador();
+	}
+
+}
