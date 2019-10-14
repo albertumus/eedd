@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <Cola.hpp>
 #include <Box.hpp>
+#include <algorithm>
 
 void cambiarCola(Pasajero *p, Cola *c1, Cola *c2);
 void serAtendido(Box *box, Pasajero *pp);
+void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t );
 
 int main(int argc, char **argv)
 {
@@ -56,26 +58,10 @@ int main(int argc, char **argv)
 	}
 	 */
 	
-	// Metemos los dos primero en t = 0
-	pColaListos->insertar(pasajero1);
-	pColaListos->insertar(pasajero3);
-	
-	// Buscar prioriad maxima de ese momento
-	*pPrioridad = pColaListos->buscarPrioridad();
-	
-	// recuperamos la posicion de memoria del más prioridad
-	Pasajero* personaMaxPrioridad = pColaListos->cogerPrimeroPrioridad(pt, pPrioridad);
-	
-	// Metemos la persona en el box
-	serAtendido(pBox1, personaMaxPrioridad);
-	
-	// Seteamos la hora a la que ha sido metido y psar CF
-	personaMaxPrioridad->setHoraAtendido(30);
-	cambiarCola(personaMaxPrioridad, pColaListos, pColaFinal);
-
-
-	cout << pBox1->getOcupado() << " " << pBox1->getValor() << endl;
-	cout << pBox2->getOcupado() << " " << pBox2->getValor() << endl;
+	pasajero1->setHoraAtendido(0);
+	cout << pasajero1->calcularHoraSalida() << endl;
+	comprobarBoxFinalizado(Box);
+	cout << endl;
 	return 0;
 }
 
@@ -94,5 +80,16 @@ void serAtendido(Box *box, Pasajero *pp)
  */ 
 {
 	box->setPasajeroEnBox(pp);
+}
+
+void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
+/*
+ * Funcion que comprueba cual es el box que anes se queda vacio, lo vacia y setea el tiempo
+ * a dicho momeneot. Tambien setea el momento de salida de la persona del box en dicho momento.
+ */ 
+{
+	int momentoMasCercanoDeSalida = 0; 
+	cout << max(1,2);
+	
 }
 

@@ -50,6 +50,11 @@ void Pasajero::setHoraAtendido(int i)
 	horaAtendido = i;
 }
 
+int Pasajero::calcularHoraSalida()
+{
+	return ( horaAtendido - horaLlegada ) + duracion; 
+}
+
 Pasajero::~Pasajero()
 {
 }

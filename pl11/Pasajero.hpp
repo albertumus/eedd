@@ -13,6 +13,7 @@ public:
 	int getDuracion();
 	int getHoraAtendido();
 	void setHoraAtendido(int i);
+	int calcularHoraSalida();
 		
 private:
 	int identificador, prioridad, horaLlegada, horaAtendido, duracion;
