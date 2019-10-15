@@ -7,7 +7,9 @@ void cambiarCola(Pasajero *p, Cola *c1, Cola *c2);
 void colaDeLista(int t, Cola *colaOrigen, Cola *colaDestino);
 void serAtendido(Box *box, Pasajero *pp);
 void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t );
-void colaDeLista( int *t, Cola *colaOrigen, Cola *colaDestino );
+void colaDeLista(int *t, Cola *colaOrigen, Cola *colaDestino );
+bool boxLibre(Box box1, Box box2, Box box3);
+Box* cogerboxLibre(Box *box1, Box *box2, Box *box3);
 
 int main(int argc, char **argv)
 {
@@ -29,7 +31,7 @@ int main(int argc, char **argv)
 	Box box3 = Box(3);
 	Box* pBox3 = &box3;
 	
-	int t = 0;
+	int t = 21;
 	int* pt = &t;
 	int prioridad = 0;
 	int* pPrioridad = &prioridad;
@@ -64,11 +66,26 @@ int main(int argc, char **argv)
 //	cambiarCola(pasajero1, pColaInicial, pColaListos);
 //	pColaInicial->mostrar();
 //	pColaListos->mostrar();
-	colaDeLista(t, pColaInicial, pColaListos);
+//	colaDeLista(t, pColaInicial, pColaListos);
 	//cout << "Después de ejecutar el método..." << endl;
-	pColaInicial->mostrar();
-	pColaListos->mostrar();
-	cout << endl;
+//	pColaInicial->mostrar();
+//	pColaListos->mostrar();
+//	cout << endl;
+
+	//Probando box libre  =======
+//	serAtendido(pBox1, pasajero1);
+//	serAtendido(pBox2, pasajero1);
+//	serAtendido(pBox3, pasajero1);
+//	cout << boxLibre(box1, box2, box3) << endl;
+
+	//Probando coger box libre ======= 
+	serAtendido(pBox1, pasajero1);
+	serAtendido(pBox3, pasajero3);
+	serAtendido(pBox2, pasajero6);
+	
+	cogerboxLibre(pBox1, pBox2, pBox3)->setPasajeroEnBox(pasajero2);
+	cout << pBox2->getValor()->getIdentificador() << endl;
+	cout << boxLibre(box1, box2, box3) << endl;
 	
 //	pColaInicial->buscarPersonaLlegada(pt, pColaInicial);
 	
@@ -92,12 +109,11 @@ void colaDeLista(int t, Cola *colaOrigen, Cola *colaDestino)
  */ 
 {	
 	Pasajero* pasajeroLlegada = colaOrigen->buscarPersonaLlegada(t);
-	
-	while (pasajeroLlegada->getIdentificador() != 0){
+//	while (pasajeroLlegada->getIdentificador() != 0){
 		
 		cambiarCola(pasajeroLlegada, colaOrigen, colaDestino);
 		pasajeroLlegada = colaOrigen->buscarPersonaLlegada(t);
-	}
+//	}
 }
 
 void serAtendido(Box *box, Pasajero *pp)
@@ -135,3 +151,19 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
 
 }
 
+bool boxLibre(Box box1, Box box2, Box box3)
+/*
+ * Devuelve true o false en función de si un algún box está vacío o no
+ */ 
+{
+	return !box1.getOcupado() || !box2.getOcupado() || !box3.getOcupado();
+}
+
+Box* cogerboxLibre(Box *box1, Box *box2, Box *box3)
+/*
+ * Devuelve un box libre, para usar esta función, aconsejable comprobar siempre antes si hay boxLibre,
+ * ya que si no devuelve un NULL y habría que tener en cuenta este retorno
+ */ 
+{
+	return (boxLibre(*box1, *box2, *box3) ? (!box1->getOcupado() ? box1 : ((!box2->getOcupado()) ? box2 : box3)) : NULL);
+}
