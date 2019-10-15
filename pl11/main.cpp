@@ -98,6 +98,7 @@ void colaDeLista(int t, Cola *colaOrigen, Cola *colaDestino)
 		cambiarCola(pasajeroLlegada, colaOrigen, colaDestino);
 		pasajeroLlegada = colaOrigen->buscarPersonaLlegada(t);
 	}
+}
 
 void serAtendido(Box *box, Pasajero *pp)
 /*
@@ -119,17 +120,17 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
 	
 	if ( box1->getValor()->calcularHoraSalida() == *t )
 	{
-		b
+//		box1
 	}
 	
 	if ( box2->getValor()->calcularHoraSalida() == *t )
 	{
-		box1
+//		box1
 	}
 	
 	if ( box3->getValor()->calcularHoraSalida() == *t )
 	{
-		box1
+//		box1
 	}
 
 }
