@@ -38,6 +38,14 @@ int Cola::eliminar()
     return v->getIdentificador();
 }
 
+void Cola::mostrarPrimero()
+/*
+ * Muestra el primero de la cola
+ */ 
+{
+	cout << primero->valor;
+}
+
 void Cola::mostrar()
 /*
  * Muestra la cola en su totalidad
@@ -66,6 +74,25 @@ int Cola::longitudCola()
 	return len;
 }
 
+Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
+{
+	pnodo aux = primero;
+	Pasajero* auxPasajero;
+	
+	while (aux){
+	//while (aux->longitudCola() > 0 ){
+		if ( aux->valor->getPrioridad() == *prior)
+		{
+			auxPasajero = aux->valor;
+			return auxPasajero;
+		}
+		
+		aux = aux->siguiente;
+	}
+	
+	return auxPasajero;
+}
+
 int Cola::buscarPrioridad() 
 {
 	int priodadMax = 0;
@@ -79,7 +106,6 @@ int Cola::buscarPrioridad()
 			
         aux = aux->siguiente;
     }
-	cout << "La prioridad maxima de la cola es: " << priodadMax;
 	return priodadMax;
 }
 
