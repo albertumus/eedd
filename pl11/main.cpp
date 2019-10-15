@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 	//Probando coger box libre ======= 
 	serAtendido(pBox1, pasajero1);
 	serAtendido(pBox3, pasajero3);
-	serAtendido(pBox2, pasajero6);
+//	serAtendido(pBox2, pasajero6);
 	
 	cogerboxLibre(pBox1, pBox2, pBox3)->setPasajeroEnBox(pasajero2);
 	cout << pBox2->getValor()->getIdentificador() << endl;
