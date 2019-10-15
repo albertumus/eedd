@@ -18,6 +18,7 @@ public:
 	void borrarDeCola(Pasajero *pp, Cola *pc);
 	Pasajero* buscarPersonaLlegada(int t);
 	Pasajero* cogerPrimeroPrioridad(int *t, int *prior);
+	int calcularTiempoTotalEnAeropuero();
 
 private:
     pnodo primero, ultimo;

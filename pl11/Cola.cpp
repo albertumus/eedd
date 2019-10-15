@@ -145,6 +145,20 @@ Pasajero* Cola::buscarPersonaLlegada(int t)
 	return auxPas;
 }
 
+int Cola::calcularTiempoTotalEnAeropuero()
+{
+	int sumatorio = 0;
+	pnodo aux = primero;
+    while(aux) {
+		cout << "Tiempo total del pasajero " << aux->valor->getIdentificador() << " es " << aux->valor->calcularTiempoQuePasaEnAeropuerto() << endl;
+		cout << "Hora atendido: " << aux->valor->getHoraAtendido() << ", Hora llegada: " << aux->valor->getHoraLlegada() << ", Duración: " << aux->valor->getDuracion() << endl; 
+		sumatorio = sumatorio + aux->valor->calcularTiempoQuePasaEnAeropuerto();
+		cout << "Sumatorio++ :" << sumatorio << endl;
+		aux = aux->siguiente;
+    }
+	return sumatorio;
+}
+
 Cola::~Cola()
 /*
  * Destructor de la cola 

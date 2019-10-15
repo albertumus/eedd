@@ -14,6 +14,7 @@ public:
 	int getHoraAtendido();
 	void setHoraAtendido(int i);
 	int calcularHoraSalida();
+	int calcularTiempoQuePasaEnAeropuerto();
 		
 private:
 	int identificador, prioridad, horaLlegada, horaAtendido, duracion;

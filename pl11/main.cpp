@@ -10,6 +10,7 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t );
 void colaDeLista(int *t, Cola *colaOrigen, Cola *colaDestino );
 bool boxLibre(Box box1, Box box2, Box box3);
 Box* cogerboxLibre(Box *box1, Box *box2, Box *box3);
+int calcularTiempoMedioAeropuerto(Cola colaFinalizados);
 
 int main(int argc, char **argv)
 {
@@ -37,11 +38,11 @@ int main(int argc, char **argv)
 	int* pPrioridad = &prioridad;
 	
 	Pasajero* pasajero1 = new Pasajero(1,6,0,20);
-	colaInicial.insertar(pasajero1);
+	colaFinal.insertar(pasajero1);
 	Pasajero* pasajero2 = new Pasajero(2,7,5,39);
-	colaInicial.insertar(pasajero2);
+	colaFinal.insertar(pasajero2);
 	Pasajero* pasajero3 = new Pasajero(3,1,0,15);
-	colaInicial.insertar(pasajero3);
+	colaFinal.insertar(pasajero3);
 	Pasajero* pasajero4 = new Pasajero(4,5,7,23);
 	colaInicial.insertar(pasajero4);
 	Pasajero* pasajero5 = new Pasajero(5,3,21,20);
@@ -79,13 +80,19 @@ int main(int argc, char **argv)
 //	cout << boxLibre(box1, box2, box3) << endl;
 
 	//Probando coger box libre ======= 
-	serAtendido(pBox1, pasajero1);
-	serAtendido(pBox3, pasajero3);
-//	serAtendido(pBox2, pasajero6);
+//	serAtendido(pBox1, pasajero1);
+//	serAtendido(pBox3, pasajero3);
+////	serAtendido(pBox2, pasajero6);
+//	
+//	cogerboxLibre(pBox1, pBox2, pBox3)->setPasajeroEnBox(pasajero2);
+//	cout << pBox2->getValor()->getIdentificador() << endl;
+//	cout << boxLibre(box1, box2, box3) << endl;
 	
-	cogerboxLibre(pBox1, pBox2, pBox3)->setPasajeroEnBox(pasajero2);
-	cout << pBox2->getValor()->getIdentificador() << endl;
-	cout << boxLibre(box1, box2, box3) << endl;
+	//Probando calcularTiempoMedioAeropuerto
+	pasajero1->setHoraAtendido(32);
+	pasajero2->setHoraAtendido(24);
+	pasajero3->setHoraAtendido(12);
+	cout << "El tiempo medio es: " << calcularTiempoMedioAeropuerto(colaFinal) << endl;
 	
 //	pColaInicial->buscarPersonaLlegada(pt, pColaInicial);
 	
@@ -166,4 +173,13 @@ Box* cogerboxLibre(Box *box1, Box *box2, Box *box3)
  */ 
 {
 	return (boxLibre(*box1, *box2, *box3) ? (!box1->getOcupado() ? box1 : ((!box2->getOcupado()) ? box2 : box3)) : NULL);
+}
+
+
+int calcularTiempoMedioAeropuerto(Cola colaFinalizados)
+/*
+ * Calcula el tiempo medio de estancia en el aeropuerto
+ */ 
+{
+	return (colaFinalizados.calcularTiempoTotalEnAeropuero())/colaFinalizados.longitudCola();
 }
