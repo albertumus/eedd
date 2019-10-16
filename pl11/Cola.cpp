@@ -1,9 +1,19 @@
 #include "Cola.hpp"
+#include <time.h>
 
 Cola::Cola()
 {
     primero = NULL;
     ultimo = NULL;
+}
+
+void sleepcp(int milliseconds) // Cross-platform sleep function
+{
+    clock_t time_end;
+    time_end = clock() + milliseconds * CLOCKS_PER_SEC/1000;
+    while (clock() < time_end)
+    {
+    }
 }
 
 void Cola::insertar(Pasajero* v )
@@ -78,15 +88,15 @@ Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
 {
 	pnodo aux = primero;
 	Pasajero* auxPasajero;
+	int llegadaPrimero = 999;
 	
 	while (aux){
-	//while (aux->longitudCola() > 0 ){
-		if ( aux->valor->getPrioridad() == *prior)
+		if ( aux->valor->getPrioridad() == *prior && aux->valor->getHoraLlegada() <= llegadaPrimero && aux->valor->getIdentificador() != 0)
 		{
+			cout << "entre" << endl;
+			llegadaPrimero = aux->valor->getHoraLlegada();
 			auxPasajero = aux->valor;
-			return auxPasajero;
 		}
-		
 		aux = aux->siguiente;
 	}
 	
@@ -97,53 +107,69 @@ int Cola::buscarPrioridad()
 {
 	int priodadMax = 0;
     pnodo aux = primero;
+	
     while(aux) {
         if ( aux->valor->getPrioridad() > priodadMax )
 		{
 			priodadMax = aux->valor->getPrioridad();
 		}
-			
+		
         aux = aux->siguiente;
     }
 	return priodadMax;
 }
 
-void Cola::borrarDeCola(Pasajero *pp, Cola *pc)
+Pasajero* Cola::getPrimero()
+{
+  return primero->valor;
+}
+
+void Cola::borrarDeCola(Pasajero *pp )
 /*
  * Borra de la cola pasada por parámetro el pasajero pasado por parámetro
  */
 {
+  
 	pnodo aux = primero;
 	Cola auxCola;
-	
-	while (aux){
-	//while (aux->longitudCola() > 0 ){
-		if ( aux->valor->getIdentificador() != pp->getIdentificador() )
-		{
-			auxCola.insertar(aux->valor);
-		}
-		
+  
+  while (aux){
+    if ( aux->valor->getIdentificador() != pp->getIdentificador() )
+    {
+      cout << aux->valor->getIdentificador();
+      auxCola.insertar(aux->valor);
+    }
 		aux = aux->siguiente;
 	}
-	
-	*pc = auxCola;	
+  auxCola.mostrar();
+  cout << endl;
+		
 }
 
-Pasajero* Cola::buscarPersonaLlegada( int *t)
+Pasajero* Cola::buscarPersonaLlegada(int t) 
 {
-    Pasajero* auxPasajero = new Pasajero(0,0,0,0);
+	Pasajero* auxPas = new Pasajero(0,0,0,0);
     pnodo aux = primero;
-    while ( aux )
-    {
-        if (aux->valor->getHoraLlegada() <= *t )
-        {
-            auxPasajero = aux->valor;
-            return auxPasajero;
-        }
+    while(aux) {
+        if ( aux->valor->getHoraLlegada() <= t )
+		{
+			auxPas = aux->valor;
+			return auxPas;
+		}
         aux = aux->siguiente;
     }
-    
-    return auxPasajero;
+	return auxPas;
+}
+
+int Cola::calcularTiempoTotalEnAeropuero()
+{
+	int sumatorio = 0;
+	pnodo aux = primero;
+    while(aux) {
+		sumatorio = sumatorio + aux->valor->calcularTiempoQuePasaEnAeropuerto();
+		aux = aux->siguiente;
+    }
+	return sumatorio;
 }
 
 Cola::~Cola()

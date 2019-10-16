@@ -55,6 +55,12 @@ int Pasajero::calcularHoraSalida()
 	return horaLlegada + ( horaAtendido - horaLlegada ) + duracion; 
 }
 
+int Pasajero::calcularTiempoQuePasaEnAeropuerto()
+{
+	return horaAtendido - horaLlegada + duracion;
+}
+
+
 Pasajero::~Pasajero()
 {
 }

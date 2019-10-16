@@ -10,14 +10,17 @@ public:
 	~Cola();
 	
 	void insertar(Pasajero* v);
-    int eliminar();
-    void mostrar();
+  int eliminar();
+  void mostrar();
+  void sleepcp(int milliseconds);
 	void mostrarPrimero();
 	int longitudCola();
 	int buscarPrioridad();
+	void borrarDeCola(Pasajero *pp);
+	Pasajero* buscarPersonaLlegada(int t);
 	Pasajero* cogerPrimeroPrioridad(int *t, int *prior);
-	void borrarDeCola(Pasajero *pp, Cola *pc);
-    Pasajero* buscarPersonaLlegada( int *t );
+  Pasajero* getPrimero();
+	int calcularTiempoTotalEnAeropuero();
 
 private:
     pnodo primero, ultimo;
