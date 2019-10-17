@@ -20,6 +20,11 @@ bool Box::getOcupado()
 	}
 }
 
+void Box::vaciarBox()
+{
+	valor = false;
+}
+
 Pasajero* Box::getValor() 
 {
 	return valor;

@@ -10,6 +10,7 @@ public:
 	
 	bool getOcupado();
 	Pasajero* getValor();
+	void vaciarBox();
 	void setPasajeroEnBox(Pasajero* pp);
 
 private:

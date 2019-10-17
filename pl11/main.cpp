@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	Box box3 = Box(3);
 	Box* pBox3 = &box3;
 	
-	int t = 11;
+	int t = 25;
 	int* pt = &t;
 	int prioridad = 0;
 	int* pPrioridad = &prioridad;
@@ -99,9 +99,7 @@ int main(int argc, char **argv)
 	//colaDeLista(t, pColaInicial, pColaFinal);
 	//Pasajero* pasajeroLlegada = pColaInicial->buscarPersonaLlegada(t);
 
-
-	
-	
+		
 	int a;
 	cin >> a;
 	return 0;
@@ -152,22 +150,22 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
  */ 
 {
 	int momentoMasCercanoDeSalida =  min( box1->getValor()->calcularHoraSalida(), min( box2->getValor()->calcularHoraSalida(), box3->getValor()->calcularHoraSalida()) );
-	cout << "El momento más cercano de salida es: " << momentoMasCercanoDeSalida << endl;
+	cout << "El momento mas cercano de salida es: " << momentoMasCercanoDeSalida << endl;
 	*t = momentoMasCercanoDeSalida;
 	
 	if ( box1->getValor()->calcularHoraSalida() == *t )
 	{
-//		box1
+		box1->vaciarBox();
 	}
 	
 	if ( box2->getValor()->calcularHoraSalida() == *t )
 	{
-//		box1
+		box2->vaciarBox();
 	}
 	
 	if ( box3->getValor()->calcularHoraSalida() == *t )
 	{
-//		box1
+		box3->vaciarBox();
 	}
 
 }
