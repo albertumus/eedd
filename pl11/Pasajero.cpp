@@ -52,7 +52,7 @@ void Pasajero::setHoraAtendido(int i)
 
 int Pasajero::calcularHoraSalida()
 {
-	return horaLlegada + ( horaAtendido - horaLlegada ) + duracion; 
+	return horaAtendido + duracion; 
 }
 
 int Pasajero::calcularTiempoQuePasaEnAeropuerto()

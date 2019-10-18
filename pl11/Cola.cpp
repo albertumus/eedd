@@ -84,6 +84,23 @@ int Cola::longitudCola()
 	return len;
 }
 
+int Cola::buscarPrimerTiempoLlegada() {
+	
+	pnodo aux = primero;
+	int llegadaPrimero = aux->valor->getHoraLlegada();
+	
+	
+	while (aux)
+	{
+		if ( aux->valor->getHoraLlegada() < llegadaPrimero )
+		{
+			llegadaPrimero = aux->valor->getHoraLlegada();
+		}
+		aux = aux->siguiente;
+	}
+	
+	return llegadaPrimero;
+}
 Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
 {
 	pnodo aux = primero;
@@ -93,13 +110,11 @@ Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
 	while (aux){
 		if ( aux->valor->getPrioridad() == *prior && aux->valor->getHoraLlegada() <= llegadaPrimero && aux->valor->getIdentificador() != 0)
 		{
-			cout << "entre" << endl;
 			llegadaPrimero = aux->valor->getHoraLlegada();
 			auxPasajero = aux->valor;
 		}
 		aux = aux->siguiente;
 	}
-	
 	return auxPasajero;
 }
 
@@ -131,19 +146,19 @@ void Cola::borrarDeCola(Pasajero *pp )
 {
   
 	pnodo aux = primero;
-	Cola auxCola;
   
-  while (aux){
-    if ( aux->valor->getIdentificador() != pp->getIdentificador() )
-    {
-      cout << aux->valor->getIdentificador();
-      auxCola.insertar(aux->valor);
-    }
-		aux = aux->siguiente;
+  int lenCola = this->longitudCola();
+   
+	for ( int i=0; i<lenCola; i++ )
+	{
+		if ( aux->valor->getIdentificador() != pp->getIdentificador() )
+		{
+		  this->insertar(aux->valor);
+		}
+
+		this->eliminar();
+		aux = primero;
 	}
-  auxCola.mostrar();
-  cout << endl;
-		
 }
 
 Pasajero* Cola::buscarPersonaLlegada(int t) 
