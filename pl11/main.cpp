@@ -1,10 +1,11 @@
 #include <stdio.h>
-#include <Cola.hpp>
-#include <Box.hpp>
+#include "Cola.hpp"
+#include "Box.hpp"
 #include <algorithm>
 
-void cambiarCola(Pasajero *p, Cola *c1, Cola *c2);
-void colaDeLista(int t, Cola *colaOrigen, Cola *colaDestino);
+void sleepcp2(int milliseconds);
+void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino);
+void colaDeLista(int t, Cola *pColaOrigen,Cola &colaOrigen ,Cola *pColaDestino);
 void serAtendido(Box *box, Pasajero *pp);
 void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t );
 void colaDeLista(int *t, Cola *colaOrigen, Cola *colaDestino );
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
 	Box box3 = Box(3);
 	Box* pBox3 = &box3;
 	
-	int t = 21;
+	int t = 25;
 	int* pt = &t;
 	int prioridad = 0;
 	int* pPrioridad = &prioridad;
@@ -89,38 +90,48 @@ int main(int argc, char **argv)
 //	cout << boxLibre(box1, box2, box3) << endl;
 	
 	//Probando calcularTiempoMedioAeropuerto
-	pasajero1->setHoraAtendido(32);
+/*	pasajero1->setHoraAtendido(32);
 	pasajero2->setHoraAtendido(24);
 	pasajero3->setHoraAtendido(12);
-	cout << "El tiempo medio es: " << calcularTiempoMedioAeropuerto(colaFinal) << endl;
-	
-//	pColaInicial->buscarPersonaLlegada(pt, pColaInicial);
-	
+	cout << "El tiempo medio es: " << calcularTiempoMedioAeropuerto(colaFinal) << endl;*/
+
+	//colaDeLista(t, pColaInicial, pColaFinal);
+	//Pasajero* pasajeroLlegada = pColaInicial->buscarPersonaLlegada(t);
+
+		
+	int a;
+	cin >> a;
 	return 0;
 }
 
-void cambiarCola(Pasajero *p, Cola *colaOrigen, Cola *colaDestino)
-/*
- * Mueve a una persoan de una cola de inicio a otra final 
- */ 
+void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino)
 {
-	colaOrigen->borrarDeCola(p, colaOrigen);
-	colaDestino->insertar(p);
-//	colaOrigen->mostrar();
-//	colaDestino->mostrar();
+  int lenColaOrigen = colaOrigen.longitudCola();
+   
+  for ( int i=0; i<lenColaOrigen; i++ )
+  {
+    if ( colaOrigen.getPrimero()->getIdentificador() != p->getIdentificador() )
+    {
+      colaOrigen.insertar(colaOrigen.getPrimero());
+    }
+
+    colaOrigen.eliminar();
+  }
+  
+  pcolaDestino->insertar(p);
 }
 
-void colaDeLista(int t, Cola *colaOrigen, Cola *colaDestino)
+void colaDeLista(int t, Cola *pColaOrigen, Cola &colaOrigen, Cola *pColaDestino)
 /*
  * Mueve a Cola de Listos todas las personas que hayan llegado al aeropuerto en el time que estemos de la cola Inicial
- */ 
+ */
 {	
-	Pasajero* pasajeroLlegada = colaOrigen->buscarPersonaLlegada(t);
-//	while (pasajeroLlegada->getIdentificador() != 0){
-		
-		cambiarCola(pasajeroLlegada, colaOrigen, colaDestino);
-		pasajeroLlegada = colaOrigen->buscarPersonaLlegada(t);
-//	}
+	Pasajero* pasajeroLlegada = pColaOrigen->buscarPersonaLlegada(t);
+	while (pasajeroLlegada->getIdentificador() != 0){
+		cambiarCola(pasajeroLlegada, colaOrigen, pColaDestino);
+		pasajeroLlegada =pColaOrigen->buscarPersonaLlegada(t);
+	}
+	
 }
 
 void serAtendido(Box *box, Pasajero *pp)
@@ -138,22 +149,22 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int *t )
  */ 
 {
 	int momentoMasCercanoDeSalida =  min( box1->getValor()->calcularHoraSalida(), min( box2->getValor()->calcularHoraSalida(), box3->getValor()->calcularHoraSalida()) );
-	cout << "El momento más cercano de salida es: " << momentoMasCercanoDeSalida << endl;
+	cout << "El momento mas cercano de salida es: " << momentoMasCercanoDeSalida << endl;
 	*t = momentoMasCercanoDeSalida;
 	
 	if ( box1->getValor()->calcularHoraSalida() == *t )
 	{
-//		box1
+		box1->vaciarBox();
 	}
 	
 	if ( box2->getValor()->calcularHoraSalida() == *t )
 	{
-//		box1
+		box2->vaciarBox();
 	}
 	
 	if ( box3->getValor()->calcularHoraSalida() == *t )
 	{
-//		box1
+		box3->vaciarBox();
 	}
 
 }
