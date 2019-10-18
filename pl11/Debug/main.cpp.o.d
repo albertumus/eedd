@@ -1,12 +1,3 @@
-Debug/main.cpp.o: main.cpp Cola.hpp NodoCola.hpp Pasajero.hpp Box.hpp \
- Pasajero.hpp
+Debug/main.cpp.o: main.cpp Airport.hpp
 
-Cola.hpp:
-
-NodoCola.hpp:
-
-Pasajero.hpp:
-
-Box.hpp:
-
-Pasajero.hpp:
+Airport.hpp:
