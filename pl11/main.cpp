@@ -3,7 +3,6 @@
 #include "Box.hpp"
 #include <algorithm>
 
-void sleepcp2(int milliseconds);
 void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino);
 void colaDeLista(int t, Cola *pColaOrigen,Cola &colaOrigen ,Cola *pColaDestino);
 void serAtendido(Box *box, Pasajero *pp);
