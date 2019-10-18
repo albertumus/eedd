@@ -8,6 +8,14 @@ Pasajero::Pasajero(int id, int prior, int horalleg, int dur)
 	duracion = dur;
 }
 
+void Pasajero::cambiarTiempo(int *pt)
+/*
+ * Funcion de ejemplo de como cambiar el valor para un puntero global
+ */
+{
+	*pt = 31;
+}
+
 int Pasajero::getIdentificador()
 /*
  * Devuelve el estado de la variable identificador
@@ -39,27 +47,6 @@ int Pasajero::getDuracion()
 {
 	return duracion;
 }
-
-int Pasajero::getHoraAtendido()
-{
-	return horaAtendido;
-}
-
-void Pasajero::setHoraAtendido(int i) 
-{
-	horaAtendido = i;
-}
-
-int Pasajero::calcularHoraSalida()
-{
-	return horaLlegada + ( horaAtendido - horaLlegada ) + duracion; 
-}
-
-int Pasajero::calcularTiempoQuePasaEnAeropuerto()
-{
-	return horaAtendido - horaLlegada + duracion;
-}
-
 
 Pasajero::~Pasajero()
 {
