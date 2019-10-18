@@ -11,10 +11,13 @@ public:
 	int getPrioridad();
 	int getHoraLlegada();
 	int getDuracion();
-	void cambiarTiempo(int *t);
-	
+	int getHoraAtendido();
+	void setHoraAtendido(int i);
+	int calcularHoraSalida();
+	int calcularTiempoQuePasaEnAeropuerto();
+		
 private:
-	int identificador, prioridad, horaLlegada, duracion;
+	int identificador, prioridad, horaLlegada, horaAtendido, duracion;
 };
 
 #endif // PASAJERO_HPP
