@@ -2,6 +2,7 @@
 #include "Cola.hpp"
 #include "Box.hpp"
 #include <algorithm>
+#include <conio.h>
 
 void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino);
 void colaDeLista(int t, Cola *pColaOrigen,Cola &colaOrigen ,Cola *pColaDestino);
@@ -64,6 +65,24 @@ void Airport::gestionarAeropuerto()
 
 	while ( pColaInicial->longitudCola() != 0 || pColaListos->longitudCola() != 0  || box1.getOcupado() || box2.getOcupado() || box3.getOcupado()  )
 	{
+		cout << endl;
+		cout << "Pulsa para realizar iteracion: ";
+		getch();
+		
+		cout << endl << "Tiempo actual de la iteracion: " << t << endl;
+		cout << endl;
+		cout << "#### Estado Inicial de las colas antes de iteracion ###" << endl;
+		cout << "Cola Inicial: ";
+		pColaInicial->mostrar();
+		cout << endl;
+		cout << "Cola Listos: ";
+		pColaListos->mostrar();
+		cout << endl;
+		cout << "Cola Final: ";
+		pColaFinal->mostrar();
+		cout << endl;
+		cout << endl;
+		
 		if ( pColaInicial->longitudCola() != 0 )
 		{
 			colaDeLista(t, pColaInicial, colaInicial, pColaListos); // bien
@@ -78,15 +97,10 @@ void Airport::gestionarAeropuerto()
 		while ( pColaListos->longitudCola() > 0 && boxLibre(box1, box2, box3) ) 
 		{
 		serAtendido(cogerboxLibre(pBox1, pBox2, pBox3), pColaListos->cogerPrimeroPrioridad(pt, pPrioridad), colaListos, t); 
-		pColaInicial->mostrar();
-		pColaListos->mostrar();
-		pColaFinal->mostrar();
 		prioridad = pColaListos->buscarPrioridad();
-		int b;
-		cin >> b;
 		}
 		
-		cout << "#### Estaado de los boxxes ###" << endl;
+		cout << "#### Estado de los boxes ###" << endl;
 		if ( box1.getOcupado() )
 		{
 			cout << "El pasajero " << box1.getValor()->getIdentificador() << " esta en el box y sale en: " << box1.getValor()->calcularHoraSalida() << endl;
@@ -105,30 +119,39 @@ void Airport::gestionarAeropuerto()
 	
 		if ( !boxLibre(box1, box2, box3) )
 		{
-			cout << endl << "No quedan boxes libre y he vaciado uno" << endl;
+			cout << endl << "Accion realizada: No quedan boxes libre y he vaciado uno" << endl;
 			comprobarBoxFinalizado( pBox1, pBox2, pBox3, t, pColaFinal );
 			
 		} else if ( pColaInicial->longitudCola() != 0 && pColaListos->longitudCola() == 0 )
 		{
-			cout << endl << "Quedaban boxes libres y he metido a alguien por lelgar" << endl;
+			cout << endl << "Accion realizada: Quedaban boxes libres y he movido el tiempo actual hasta donde llege alguien" << endl;
 			t = pColaInicial->buscarPrimerTiempoLlegada();
 		} else {
-			cout << endl << "Solo quedan vaciar boxs" << endl;
+			cout << endl << "Accion realizada: Solo quedan vaciar boxes" << endl;
 			comprobarBoxFinalizado( pBox1, pBox2, pBox3, t, pColaFinal );
 		}
-
-		cout << "#### Cola Final despues de bucle grande ###" << endl;
+		cout << endl;
+		cout << "#### Estado Final de las cola despues de iteracion ###" << endl;
+		cout << "Cola Inicial: ";
+		pColaInicial->mostrar();
+		cout << endl;
+		cout << "Cola Listos: ";
+		pColaListos->mostrar();
+		cout << endl;
+		cout << "Cola Final: ";
 		pColaFinal->mostrar();
-		cout << "#### Tiendo despu despues de bucle grande ###" << endl << t << endl;
+		cout << endl;
+		cout << endl <<"#### Tiempo en el que finaliza la iteracion: " << t << " "<<endl;
 		
-		cout << "#### Terminado Bucle Grande ###" << endl;
-		int a;
-		cin >> a;
+		cout << endl;
+		cout << "############################### Terminada Iteracion ###############################" << endl;
+		cout << endl;
+
 	}
 	
 	
 	
-	cout << calcularTiempoMedioAeropuerto(colaFinal);
+	cout << endl << "EL TIEMPO FINAL DEL AEROPUERTO: " << calcularTiempoMedioAeropuerto(colaFinal);
 
 
 }
