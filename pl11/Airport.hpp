@@ -17,6 +17,8 @@ public:
 	Box* cogerboxLibre(Box *box1, Box *box2, Box *box3);
 	void comprobarBoxFinalizado();
 	float calcularTiempoMedioAeropuerto();
+	void mostrarEstadoBoxes();
+	void mostrarColas();
 	
 private:
 	int t, prioridad;

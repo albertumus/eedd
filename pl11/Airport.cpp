@@ -52,25 +52,17 @@ void Airport::gestionarAeropuerto()
 		cout << endl << "Tiempo actual del aeropuerto: " << t << endl;
 		cout << endl;
 		cout << "#### Estado Inicial de las colas antes de iteracion ###" << endl;
-		cout << "Cola Inicial: ";
-		pColaInicial->mostrar();
 		cout << endl;
-		cout << "Cola Listos: ";
-		pColaListos->mostrar();
-		cout << endl;
-		cout << "Cola Final: ";
-		pColaFinal->mostrar();
-		cout << endl;
-		cout << endl;
+		mostrarColas();
 		
 		if ( colaInicial.longitudCola() != 0 )
 		{
-			colaDeLista(); // bien
+			colaDeLista();
 		}
 		
 		if ( colaListos.longitudCola() != 0  )
 		{
-			prioridad = colaListos.buscarPrioridad(); // bien
+			prioridad = colaListos.buscarPrioridad();
 		}
 		
 		
@@ -80,22 +72,7 @@ void Airport::gestionarAeropuerto()
 		prioridad = pColaListos->buscarPrioridad();
 		}
 		
-		cout << "#### Estado de los boxes ###" << endl;
-		if ( box1.getOcupado() )
-		{
-			cout << "El pasajero " << box1.getValor()->getIdentificador() << " esta en el box y sale en: " << box1.getValor()->calcularHoraSalida() << endl;
-		}
-		
-		if ( box2.getOcupado() )
-		{
-			cout << "El pasajero " << box2.getValor()->getIdentificador() << " esta en el box y sale en: " << box2.getValor()->calcularHoraSalida() << endl;
-		}
-		
-		if ( box3.getOcupado() )
-		{
-			cout << "El pasajero " << box3.getValor()->getIdentificador() << " esta en el box y sale en: " << box3.getValor()->calcularHoraSalida() << endl;
-		}
-		cout << "#### ######### ###" << endl;
+		mostrarEstadoBoxes();
 	
 		if ( !boxLibre() )
 		{
@@ -112,15 +89,7 @@ void Airport::gestionarAeropuerto()
 		}
 		cout << endl;
 		cout << "#### Estado Final de las cola despues de iteracion ###" << endl;
-		cout << "Cola Inicial: ";
-		pColaInicial->mostrar();
-		cout << endl;
-		cout << "Cola Listos: ";
-		pColaListos->mostrar();
-		cout << endl;
-		cout << "Cola Final: ";
-		pColaFinal->mostrar();
-		cout << endl;
+		mostrarColas();
 		cout << endl <<"#### Tiempo del aeropuerto en el que finaliza esta iteracion: " << t << " "<<endl;
 		
 		cout << endl;
@@ -247,3 +216,41 @@ float Airport::calcularTiempoMedioAeropuerto()
 	return resp;
 }
 
+void Airport::mostrarEstadoBoxes()
+/*
+ * Muestra pasajeros en los boxes
+ */ 
+{
+		cout << "#### Estado de los boxes ###" << endl;
+		if ( box1.getOcupado() )
+		{
+			cout << "El pasajero " << box1.getValor()->getIdentificador() << " esta en el box y sale en: " << box1.getValor()->calcularHoraSalida() << endl;
+		}
+		
+		if ( box2.getOcupado() )
+		{
+			cout << "El pasajero " << box2.getValor()->getIdentificador() << " esta en el box y sale en: " << box2.getValor()->calcularHoraSalida() << endl;
+		}
+		
+		if ( box3.getOcupado() )
+		{
+			cout << "El pasajero " << box3.getValor()->getIdentificador() << " esta en el box y sale en: " << box3.getValor()->calcularHoraSalida() << endl;
+		}
+		cout << "#### ######### ###" << endl;
+}
+
+void Airport::mostrarColas()
+/*
+ * Muestra los componentes de las 3 colas
+ */ 
+{
+		cout << "Cola Inicial: ";
+		colaInicial.mostrar();
+		cout << endl;
+		cout << "Cola Listos: ";
+		colaListos.mostrar();
+		cout << endl;
+		cout << "Cola Final: ";
+		colaFinal.mostrar();
+		cout << endl;
+}
