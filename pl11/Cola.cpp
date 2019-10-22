@@ -1,5 +1,4 @@
 #include "Cola.hpp"
-#include <time.h>
 
 Cola::Cola()
 {
@@ -55,7 +54,7 @@ void Cola::mostrar()
     pnodo aux = primero;
     cout << endl;
     while(aux) {
-		aux->valor->mostrarPasajero();
+        aux->valor->mostrarPasajero();
         aux = aux->siguiente;
     }
     cout << endl;
@@ -92,14 +91,14 @@ int Cola::buscarPrimerTiempoLlegada() {
 	
 	return llegadaPrimero;
 }
-Pasajero* Cola::cogerPrimeroPrioridad( int *t, int *prior )
+Pasajero* Cola::cogerPrimeroPrioridad( int prior )
 {
 	pnodo aux = primero;
 	Pasajero* auxPasajero;
 	int llegadaPrimero = 999;
 	
 	while (aux){
-		if ( aux->valor->getPrioridad() == *prior && aux->valor->getHoraLlegada() <= llegadaPrimero && aux->valor->getIdentificador() != 0)
+		if ( aux->valor->getPrioridad() == prior && aux->valor->getHoraLlegada() <= llegadaPrimero && aux->valor->getIdentificador() != 0)
 		{
 			llegadaPrimero = aux->valor->getHoraLlegada();
 			auxPasajero = aux->valor;
@@ -175,7 +174,6 @@ int Cola::calcularTiempoTotalEnAeropuero()
 	pnodo aux = primero;
     while(aux) {
 		sumatorio = sumatorio + aux->valor->calcularTiempoQuePasaEnAeropuerto();
-		cout << "Sumatorio++ :" << sumatorio << endl;
 		aux = aux->siguiente;
     }
 	return sumatorio;

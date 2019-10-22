@@ -19,7 +19,7 @@ public:
 	int buscarPrimerTiempoLlegada();
 	void borrarDeCola(Pasajero *pp);
 	Pasajero* buscarPersonaLlegada(int t);
-	Pasajero* cogerPrimeroPrioridad(int *t, int *prior);
+	Pasajero* cogerPrimeroPrioridad(int prior);
 	Pasajero* getPrimero();
 	int calcularTiempoTotalEnAeropuero();
 

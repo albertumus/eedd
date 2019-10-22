@@ -34,7 +34,7 @@ void Box::setPasajeroEnBox(Pasajero* pp)
  * Setea el valor de la variable ocupado al valor pasado por parametro
  */
 {
-
+	pp->setIdentificadorBox(identificador);
 	valor = pp;
 }
 

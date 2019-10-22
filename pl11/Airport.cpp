@@ -1,45 +1,25 @@
 #include "Airport.hpp"
-#include "Cola.hpp"
-#include "Box.hpp"
 #include <algorithm>
 #include <conio.h>
 
-void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino);
-void colaDeLista(int t, Cola *pColaOrigen,Cola &colaOrigen ,Cola *pColaDestino);
-void serAtendido(Box *box, Pasajero *pp, Cola &colaListos, int t);
-void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int &t, Cola *colaFinal);
-void colaDeLista(int *t, Cola *colaOrigen, Cola *colaDestino );
-bool boxLibre(Box box1, Box box2, Box box3);
-Box* cogerboxLibre(Box *box1, Box *box2, Box *box3);
-float calcularTiempoMedioAeropuerto(Cola colaFinalizados);
-
 Airport::Airport()
 {
+	t = 0; 
+	prioridad = 0;
 }
 
 void Airport::gestionarAeropuerto()
 {
-	Cola colaInicial;
+	
 	Cola* pColaInicial = &colaInicial;
-    
-	Cola colaListos;
 	Cola* pColaListos = &colaListos;
-
-	Cola colaFinal;
 	Cola* pColaFinal = &colaFinal;
 	
-	Box box1 = Box(1);
 	Box* pBox1 = &box1;
-	
-	Box box2 = Box(2);
 	Box* pBox2 = &box2;
-	
-	Box box3 = Box(3);
 	Box* pBox3 = &box3;
 	
-	int t = 0;
 	int* pt = &t;
-	int prioridad = 0;
 	int* pPrioridad = &prioridad;
 	
 	Pasajero* pasajero1 = new Pasajero(1,6,0,20);
@@ -63,13 +43,13 @@ void Airport::gestionarAeropuerto()
 	
 
 
-	while ( pColaInicial->longitudCola() != 0 || pColaListos->longitudCola() != 0  || box1.getOcupado() || box2.getOcupado() || box3.getOcupado()  )
+	while ( colaInicial.longitudCola() != 0 || colaListos.longitudCola() != 0  || box1.getOcupado() || box2.getOcupado() || box3.getOcupado()  )
 	{
 		cout << endl;
 		cout << "Pulsa para realizar iteracion: ";
 		getch();
 		
-		cout << endl << "Tiempo actual de la iteracion: " << t << endl;
+		cout << endl << "Tiempo actual del aeropuerto: " << t << endl;
 		cout << endl;
 		cout << "#### Estado Inicial de las colas antes de iteracion ###" << endl;
 		cout << "Cola Inicial: ";
@@ -83,20 +63,20 @@ void Airport::gestionarAeropuerto()
 		cout << endl;
 		cout << endl;
 		
-		if ( pColaInicial->longitudCola() != 0 )
+		if ( colaInicial.longitudCola() != 0 )
 		{
-			colaDeLista(t, pColaInicial, colaInicial, pColaListos); // bien
+			colaDeLista(); // bien
 		}
 		
-		if ( pColaListos->longitudCola() != 0  )
+		if ( colaListos.longitudCola() != 0  )
 		{
-			prioridad = pColaListos->buscarPrioridad(); // bien
+			prioridad = colaListos.buscarPrioridad(); // bien
 		}
 		
 		
-		while ( pColaListos->longitudCola() > 0 && boxLibre(box1, box2, box3) ) 
+		while ( colaListos.longitudCola() > 0 && boxLibre() ) 
 		{
-		serAtendido(cogerboxLibre(pBox1, pBox2, pBox3), pColaListos->cogerPrimeroPrioridad(pt, pPrioridad), colaListos, t); 
+		serAtendido(cogerboxLibre(pBox1, pBox2, pBox3), colaListos.cogerPrimeroPrioridad( prioridad )); 
 		prioridad = pColaListos->buscarPrioridad();
 		}
 		
@@ -117,10 +97,10 @@ void Airport::gestionarAeropuerto()
 		}
 		cout << "#### ######### ###" << endl;
 	
-		if ( !boxLibre(box1, box2, box3) )
+		if ( !boxLibre() )
 		{
 			cout << endl << "Accion realizada: No quedan boxes libre y he vaciado uno" << endl;
-			comprobarBoxFinalizado( pBox1, pBox2, pBox3, t, pColaFinal );
+			comprobarBoxFinalizado();
 			
 		} else if ( pColaInicial->longitudCola() != 0 && pColaListos->longitudCola() == 0 )
 		{
@@ -128,7 +108,7 @@ void Airport::gestionarAeropuerto()
 			t = pColaInicial->buscarPrimerTiempoLlegada();
 		} else {
 			cout << endl << "Accion realizada: Solo quedan vaciar boxes" << endl;
-			comprobarBoxFinalizado( pBox1, pBox2, pBox3, t, pColaFinal );
+			comprobarBoxFinalizado();
 		}
 		cout << endl;
 		cout << "#### Estado Final de las cola despues de iteracion ###" << endl;
@@ -141,7 +121,7 @@ void Airport::gestionarAeropuerto()
 		cout << "Cola Final: ";
 		pColaFinal->mostrar();
 		cout << endl;
-		cout << endl <<"#### Tiempo en el que finaliza la iteracion: " << t << " "<<endl;
+		cout << endl <<"#### Tiempo del aeropuerto en el que finaliza esta iteracion: " << t << " "<<endl;
 		
 		cout << endl;
 		cout << "############################### Terminada Iteracion ###############################" << endl;
@@ -149,9 +129,10 @@ void Airport::gestionarAeropuerto()
 
 	}
 	
+	cout << endl << "EL TIEMPO FINAL DEL AEROPUERTO: " << calcularTiempoMedioAeropuerto();
 	
-	
-	cout << endl << "EL TIEMPO FINAL DEL AEROPUERTO: " << calcularTiempoMedioAeropuerto(colaFinal);
+	int a;
+	cin >> a;
 
 
 }
@@ -161,7 +142,7 @@ Airport::~Airport()
 }
 
 
-void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino)
+void Airport::cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino)
 {
   int lenColaOrigen = colaOrigen.longitudCola();
    
@@ -175,23 +156,23 @@ void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola *pcolaDestino)
     colaOrigen.eliminar();
   }
   
-  pcolaDestino->insertar(p);
+  colaDestino.insertar(p);
 }
 
-void colaDeLista(int t, Cola *pColaOrigen, Cola &colaOrigen, Cola *pColaDestino)
+void Airport::colaDeLista()
 /*
  * Mueve a Cola de Listos todas las personas que hayan llegado al aeropuerto en el time que estemos de la cola Inicial
  */ 
 {	
-	Pasajero* pasajeroLlegada = pColaOrigen->buscarPersonaLlegada(t);
+	Pasajero* pasajeroLlegada = colaInicial.buscarPersonaLlegada(t);
 	while (pasajeroLlegada->getIdentificador() != 0){
-		cambiarCola(pasajeroLlegada, colaOrigen, pColaDestino);
-		pasajeroLlegada =pColaOrigen->buscarPersonaLlegada(t);
+		cambiarCola(pasajeroLlegada, colaInicial, colaListos);
+		pasajeroLlegada =colaInicial.buscarPersonaLlegada(t);
 	}
 	
 }
 
-void serAtendido(Box *box, Pasajero *pp, Cola &colaListos, int t)
+void Airport::serAtendido(Box *box, Pasajero *pp )
 /*
  * Mete a una pasajero en un box
  */ 
@@ -202,7 +183,7 @@ void serAtendido(Box *box, Pasajero *pp, Cola &colaListos, int t)
 	colaListos.borrarDeCola(pp);
 }
 
-void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int &t, Cola *colaFinal )
+void Airport::comprobarBoxFinalizado()
 /*
  * Funcion que comprueba cual es el box que anes se queda vacio, lo vacia y setea el tiempo
  * a dicho momeneot. Tambien setea el momento de salida de la persona del box en dicho momento.
@@ -210,34 +191,34 @@ void comprobarBoxFinalizado( Box *box1, Box *box2, Box *box3, int &t, Cola *cola
 {
 
 	
-	int a = box1->getOcupado() ?  box1->getValor()->calcularHoraSalida() : 10000 ;
-	int b = box2->getOcupado() ?  box2->getValor()->calcularHoraSalida() : 10000 ;
-	int h = box3->getOcupado() ?  box3->getValor()->calcularHoraSalida() : 10000 ;
+	int a = box1.getOcupado() ?  box1.getValor()->calcularHoraSalida() : 10000 ;
+	int b = box2.getOcupado() ?  box2.getValor()->calcularHoraSalida() : 10000 ;
+	int c = box3.getOcupado() ?  box3.getValor()->calcularHoraSalida() : 10000 ;
 	
-	int momentoMasCercanoDeSalida =  min( a, min( b, h));
+	int momentoMasCercanoDeSalida =  min( a, min( b, c));
 	t = momentoMasCercanoDeSalida;
 	
-	if (box1->getOcupado() && box1->getValor()->calcularHoraSalida() == t )
+	if (box1.getOcupado() && box1.getValor()->calcularHoraSalida() == t )
 	{
-		colaFinal->insertar( box1->getValor() );
-		box1->vaciarBox();
+		colaFinal.insertar( box1.getValor() );
+		box1.vaciarBox();
 	}
 	
-	if (box2->getOcupado() && box2->getValor()->calcularHoraSalida() == t )
+	if (box2.getOcupado() && box2.getValor()->calcularHoraSalida() == t )
 	{
-		colaFinal->insertar( box2->getValor() );
-		box2->vaciarBox();
+		colaFinal.insertar( box2.getValor() );
+		box2.vaciarBox();
 	}
 	
-	if ( box3->getOcupado() && box3->getValor()->calcularHoraSalida() == t )
+	if ( box3.getOcupado() && box3.getValor()->calcularHoraSalida() == t )
 	{
-		colaFinal->insertar( box3->getValor() );
-		box3->vaciarBox();
+		colaFinal.insertar( box3.getValor() );
+		box3.vaciarBox();
 	}
 
 }
 
-bool boxLibre(Box box1, Box box2, Box box3)
+bool Airport::boxLibre()
 /*
  * Devuelve true o false en función de si un algún box está vacío o no
  */ 
@@ -245,23 +226,23 @@ bool boxLibre(Box box1, Box box2, Box box3)
 	return !box1.getOcupado() || !box2.getOcupado() || !box3.getOcupado();
 }
 
-Box* cogerboxLibre(Box *box1, Box *box2, Box *box3)
+Box* Airport::cogerboxLibre(Box *box1, Box *box2, Box *box3)
 /*
  * Devuelve un box libre, para usar esta función, aconsejable comprobar siempre antes si hay boxLibre,
  * ya que si no devuelve un NULL y habría que tener en cuenta este retorno
  */ 
 {
-	return (boxLibre(*box1, *box2, *box3) ? (!box1->getOcupado() ? box1 : ((!box2->getOcupado()) ? box2 : box3)) : NULL);
+	return (boxLibre() ? (!box1->getOcupado() ? box1 : ((!box2->getOcupado()) ? box2 : box3)) : NULL);
 }
 
 
-float calcularTiempoMedioAeropuerto(Cola colaFinalizados)
+float Airport::calcularTiempoMedioAeropuerto()
 /*
  * Calcula el tiempo medio de estancia en el aeropuerto
  */ 
 {
-	float k = colaFinalizados.calcularTiempoTotalEnAeropuero();
-	float l = colaFinalizados.longitudCola();
+	float k = colaFinal.calcularTiempoTotalEnAeropuero();
+	float l = colaFinal.longitudCola();
 	float resp = k / l;
 	return resp;
 }
