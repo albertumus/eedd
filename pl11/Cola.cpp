@@ -55,7 +55,7 @@ void Cola::mostrar()
     pnodo aux = primero;
     cout << endl;
     while(aux) {
-        cout << "Pasajero Numero -> " << aux->valor->getIdentificador() << endl;
+		aux->valor->mostrarPasajero();
         aux = aux->siguiente;
     }
     cout << endl;

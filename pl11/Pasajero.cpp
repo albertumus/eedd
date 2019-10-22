@@ -1,4 +1,6 @@
 #include "Pasajero.hpp"
+#include <iostream>
+using namespace std;
 
 Pasajero::Pasajero(int id, int prior, int horalleg, int dur)
 {
@@ -58,6 +60,11 @@ int Pasajero::calcularHoraSalida()
 int Pasajero::calcularTiempoQuePasaEnAeropuerto()
 {
 	return horaAtendido - horaLlegada + duracion;
+}
+
+void Pasajero::mostrarPasajero() 
+{
+	cout << "El pasajero con id: " << this->getIdentificador() << ", prioridad: " << this->getPrioridad() << ", hora llegada: " << this->getHoraLlegada() << " y duración: " << this->getDuracion() << endl;
 }
 
 
