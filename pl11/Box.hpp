@@ -9,6 +9,7 @@ public:
 	~Box();
 	
 	bool getOcupado();
+	void mostrarBox();
 	Pasajero* getValor();
 	void vaciarBox();
 	void setPasajeroEnBox(Pasajero* pp);

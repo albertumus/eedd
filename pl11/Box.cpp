@@ -6,6 +6,11 @@ Box::Box(int id)
 	valor = 0;
 }
 
+void Box::mostrarBox()
+{
+	cout << "Box numero " << identificador << " con gente en cola " << endl;
+}
+
 bool Box::getOcupado() 
 /*
  * Devuelve el estado de la variable ocupado

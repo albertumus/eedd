@@ -41,9 +41,16 @@ void Airport::gestionarAeropuerto()
 	Pasajero* pasajero9 = new Pasajero(9,4,11,23);
 	colaInicial.insertar(pasajero9);
 	
+	listaBoxes.insertarIzq(pBox1);
+	listaBoxes.insertarIzq(pBox2);
+	listaBoxes.insertarDerch(pBox3);
+	cout << endl << listaBoxes.getLongitud();
+	listaBoxes.mostrar();
+	listaBoxes.mostrar();
+	
 
 
-	while ( colaInicial.longitudCola() != 0 || colaListos.longitudCola() != 0  || box1.getOcupado() || box2.getOcupado() || box3.getOcupado()  )
+/*	while ( colaInicial.longitudCola() != 0 || colaListos.longitudCola() != 0  || box1.getOcupado() || box2.getOcupado() || box3.getOcupado()  )
 	{
 		cout << endl;
 		cout << "Pulsa para realizar iteracion: ";
@@ -130,6 +137,7 @@ void Airport::gestionarAeropuerto()
 	}
 	
 	cout << endl << "EL TIEMPO FINAL DEL AEROPUERTO: " << calcularTiempoMedioAeropuerto();
+	*/
 	
 	int a;
 	cin >> a;

@@ -2,6 +2,7 @@
 #define AIRPORT_HPP
 #include "Cola.hpp"
 #include "Box.hpp"
+#include "Lista.hpp"
 
 class Airport
 {
@@ -23,6 +24,7 @@ private:
 	Box box1 = Box(1);
 	Box box2 = Box(2);
 	Box box3 = Box(3);
+	Lista listaBoxes;
 	Cola colaFinal;
 	Cola colaListos;
 	Cola colaInicial;
