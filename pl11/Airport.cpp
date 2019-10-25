@@ -5,6 +5,7 @@
 Airport::Airport()
 {
 	t = 0; 
+	numeroBoxes = 0;
 }
 
 void Airport::gestionarAeropuerto()
@@ -35,16 +36,11 @@ void Airport::gestionarAeropuerto()
 	colaInicial.insertar(pasajero9);
 	
 	
-	Box* nuevo_box = new Box(5);
-	nuevo_box->setPasajeroEnColaBox(pasajero1);
-	listaBoxes.insertarDerch(nuevo_box);
-	Box* nuevo_box2 = new Box(6);
-	nuevo_box2->setPasajeroEnColaBox(pasajero2);
-	listaBoxes.insertarIzq(nuevo_box2);
+	crearNuevoBox();
+	crearNuevoBox();
+
+	
 	listaBoxes.mostrar();
-	
-	cout << "Hay box vacio? : " << listaBoxes.hayBoxVacio();
-	
 	
 	int a;
 	cin >> a;
@@ -52,10 +48,12 @@ void Airport::gestionarAeropuerto()
 
 }
 
-Airport::~Airport()
+void Airport::crearNuevoBox()
 {
+	Box* nuevo_box = new Box(numeroBoxes+1);
+	listaBoxes.insertarDerch(nuevo_box);
+	numeroBoxes = numeroBoxes+1;
 }
-
 
 void Airport::cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino)
 {
@@ -84,4 +82,11 @@ float Airport::calcularTiempoMedioAeropuerto()
 	float resp = k / l;
 	return resp;
 }
+
+Airport::~Airport()
+{
+}
+
+
+
 

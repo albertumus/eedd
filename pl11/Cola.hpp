@@ -11,7 +11,6 @@ public:
 	void insertar(Pasajero* v);
 	int eliminar();
 	void mostrar();
-	void sleepcp(int milliseconds);
 	void mostrarPrimero();
 	int longitudCola();
 	int buscarPrioridad();

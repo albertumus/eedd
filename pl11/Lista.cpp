@@ -59,7 +59,7 @@ void Lista::insertarDerch(Box* box)
 	lnodo nuevo_nodo;
 	nuevo_nodo = new NodoLista(box);
 	
-	if ( !primero )
+	if ( this->getLongitud() < 1 )
 	{
 		primero = nuevo_nodo;
 		longitud = 1;
@@ -71,16 +71,16 @@ void Lista::insertarDerch(Box* box)
 			aux = aux->siguiente;
 		}
 		aux->siguiente = nuevo_nodo;
+		longitud = longitud + 1;
 	}
-	
-	longitud = longitud + 1;
+
 }
 
 void Lista::mostrar()
 {
 	lnodo aux = primero;
 	
-	for ( int i=1; i<longitud; i++)
+	for ( int i=0; i<longitud; i++)
 	{
 		aux->valor->mostrarBox();
 		aux = aux->siguiente;

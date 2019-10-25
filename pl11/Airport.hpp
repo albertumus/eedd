@@ -11,13 +11,12 @@ public:
 	~Airport();
 	
 	void gestionarAeropuerto();
+	void crearNuevoBox();
 	void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino);
-	bool boxLibre();
-	void comprobarBoxFinalizado();
 	float calcularTiempoMedioAeropuerto();
 	
 private:
-	int t;
+	int t, numeroBoxes;
 	Lista listaBoxes;
 	Cola colaFinal;
 	Cola colaInicial;
