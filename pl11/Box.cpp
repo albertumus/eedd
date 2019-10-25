@@ -3,7 +3,6 @@
 Box::Box(int id)
 {
 	identificador = id;
-	valor = 0;
 }
 
 void Box::mostrarBox()
@@ -30,17 +29,17 @@ void Box::vaciarBox()
 	valor = false;
 }
 
-Pasajero* Box::getValor() 
+Cola* Box::getValor() 
 {
 	return valor;
 }
-void Box::setPasajeroEnBox(Pasajero* pp)
+void Box::setPasajeroEnColaBox(Pasajero* pp)
 /*
  * Setea el valor de la variable ocupado al valor pasado por parametro
  */
 {
 	pp->setIdentificadorBox(identificador);
-	valor = pp;
+	valor->insertar(pp);
 }
 
 Box::~Box()

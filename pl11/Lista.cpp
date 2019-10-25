@@ -10,6 +10,12 @@ int Lista::getLongitud()
 {
 	return longitud;
 }
+
+Box* Lista::getPrimero()
+{
+	return primero->valor;
+}
+
 void Lista::reducirLongitud(int reduc) 
 {
 	longitud = longitud - reduc;

@@ -1,6 +1,6 @@
 #ifndef BOX_HPP
 #define BOX_HPP
-#include "Pasajero.hpp"
+#include "Cola.hpp"
 
 class Box
 {
@@ -10,12 +10,12 @@ public:
 	
 	bool getOcupado();
 	void mostrarBox();
-	Pasajero* getValor();
+	Cola* getValor();
 	void vaciarBox();
-	void setPasajeroEnBox(Pasajero* pp);
+	void setPasajeroEnColaBox(Pasajero* pp);
 
 private:
-	Pasajero* valor;
+	Cola* valor = new Cola();
 	int identificador;
 
 };

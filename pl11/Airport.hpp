@@ -20,13 +20,9 @@ public:
 	float calcularTiempoMedioAeropuerto();
 	
 private:
-	int t, prioridad;
-	Box box1 = Box(1);
-	Box box2 = Box(2);
-	Box box3 = Box(3);
+	int t;
 	Lista listaBoxes;
 	Cola colaFinal;
-	Cola colaListos;
 	Cola colaInicial;
 };
 
