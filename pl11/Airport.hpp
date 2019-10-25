@@ -11,11 +11,8 @@ public:
 	~Airport();
 	
 	void gestionarAeropuerto();
-	void colaDeLista();
 	void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino);
-	void serAtendido(Box* box, Pasajero* pp );
 	bool boxLibre();
-	Box* cogerboxLibre(Box *box1, Box *box2, Box *box3);
 	void comprobarBoxFinalizado();
 	float calcularTiempoMedioAeropuerto();
 	

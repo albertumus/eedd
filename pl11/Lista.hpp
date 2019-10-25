@@ -15,6 +15,7 @@ public:
 	void eliminarIzq();
 	void eliminarDerch();
 	void mostrar();
+	bool hayBoxVacio();
 	Box* getPrimero();
 
 private:

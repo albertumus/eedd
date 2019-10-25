@@ -11,6 +11,21 @@ int Lista::getLongitud()
 	return longitud;
 }
 
+bool Lista::hayBoxVacio()
+{
+	lnodo aux = primero;
+	bool vacio = false;
+	
+	for ( int i=1; i<longitud; i++)
+	{
+		vacio = primero->valor->getValor()->longitudCola() == 0 ? true : false; 
+		aux = aux->siguiente;
+	}
+	
+	return vacio;
+	
+}
+
 Box* Lista::getPrimero()
 {
 	return primero->valor;
@@ -65,7 +80,7 @@ void Lista::mostrar()
 {
 	lnodo aux = primero;
 	
-	for ( int i=1; i<=longitud; i++)
+	for ( int i=1; i<longitud; i++)
 	{
 		aux->valor->mostrarBox();
 		aux = aux->siguiente;

@@ -36,8 +36,15 @@ void Airport::gestionarAeropuerto()
 	
 	
 	Box* nuevo_box = new Box(5);
+	nuevo_box->setPasajeroEnColaBox(pasajero1);
 	listaBoxes.insertarDerch(nuevo_box);
+	Box* nuevo_box2 = new Box(6);
+	nuevo_box2->setPasajeroEnColaBox(pasajero2);
+	listaBoxes.insertarIzq(nuevo_box2);
 	listaBoxes.mostrar();
+	
+	cout << "Hay box vacio? : " << listaBoxes.hayBoxVacio();
+	
 	
 	int a;
 	cin >> a;
@@ -66,56 +73,6 @@ void Airport::cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino)
   
   colaDestino.insertar(p);
 }
-
-void Airport::colaDeLista()
-/*
- * Mueve a Cola de Listos todas las personas que hayan llegado al aeropuerto en el time que estemos de la cola Inicial
- */ 
-{	
-	Pasajero* pasajeroLlegada = colaInicial.buscarPersonaLlegada(t);
-	while (pasajeroLlegada->getIdentificador() != 0){
-		cambiarCola(pasajeroLlegada, colaInicial, colaListos);
-		pasajeroLlegada =colaInicial.buscarPersonaLlegada(t);
-	}
-	
-}
-
-void Airport::serAtendido(Box *box, Pasajero *pp )
-/*
- * Mete a una pasajero en un box
- */ 
-{
-	
-	box->setPasajeroEnColaBox(pp);
-	pp->setHoraAtendido(t);
-	colaListos.borrarDeCola(pp);
-}
-
-void Airport::comprobarBoxFinalizado()
-/*
- * Funcion que comprueba cual es el box que anes se queda vacio, lo vacia y setea el tiempo
- * a dicho momeneot. Tambien setea el momento de salida de la persona del box en dicho momento.
- */ 
-{
-}
-
-bool Airport::boxLibre()
-/*
- * Devuelve true o false en función de si un algún box está vacío o no
- */ 
-{
-	//return !box1.getOcupado() || !box2.getOcupado() || !box3.getOcupado();
-}
-
-Box* Airport::cogerboxLibre(Box *box1, Box *box2, Box *box3)
-/*
- * Devuelve un box libre, para usar esta función, aconsejable comprobar siempre antes si hay boxLibre,
- * ya que si no devuelve un NULL y habría que tener en cuenta este retorno
- */ 
-{
-	//return (boxLibre() ? (!box1->getOcupado() ? box1 : ((!box2->getOcupado()) ? box2 : box3)) : NULL);
-}
-
 
 float Airport::calcularTiempoMedioAeropuerto()
 /*
