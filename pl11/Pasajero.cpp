@@ -24,6 +24,16 @@ int Pasajero::getPrioridad()
 	return prioridad;
 }
 
+bool Pasajero::estaSiendoAtendido()
+{
+	return atendido;
+}
+
+void Pasajero::setAtendido()
+{
+	atendido = !atendido;
+}
+
 void Pasajero::setIdentificadorBox(int iden)
 {
 	identificadorBox = iden;
