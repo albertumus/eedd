@@ -36,8 +36,22 @@ void Airport::gestionarAeropuerto()
 	colaInicial.insertar(pasajero9);
 	
 	
-
-
+	
+	crearNuevoBox();
+	// Se mete al primer pasajero
+	pasajero1->setAtendido();
+	pasajero1->setHoraAtendido(0);
+	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero1);
+	// Se meten mas pasajeros
+	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero2);
+	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero4);
+	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero3);
+	cout << endl << "la longitud inicial es " << listaBoxes.getPrimero()->getValor()->longitudCola() << endl;
+	finalizarBoxes();
+	cout << endl << "despues, la longitud final es " << listaBoxes.getPrimero()->getValor()->longitudCola();
+	cout << endl << "la cola final es ";
+	colaFinal.mostrar();
+	cout << "el tiempo medio de atencion es " << calcularTiempoMedioAeropuerto();
 	
 	
 	
@@ -69,6 +83,32 @@ void Airport::cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino)
   }
   
   colaDestino.insertar(p);
+}
+
+void Airport::finalizarBoxes()
+{
+	lnodo aux = listaBoxes.getPrimerNodo();
+	
+	for ( int i = 0; i<listaBoxes.getLongitud();i++)
+	{
+		if ( aux->valor->getValor()->longitudCola() > 0 )
+		{
+			while ( aux->valor->getValor()->longitudCola() > 0 )
+			{
+				int horaSalidaLocal = aux->valor->getValor()->getPrimero()->calcularHoraSalida();
+				cambiarCola(aux->valor->getValor()->getPrimero(), *aux->valor->getValor(), colaFinal);
+				if ( aux->valor->getValor()->longitudCola() > 0 )
+				{
+					aux->valor->getValor()->getPrimero()->setHoraAtendido(horaSalidaLocal);
+					aux->valor->getValor()->getPrimero()->setAtendido();
+				}
+			}
+		} else
+		{
+			cout << "No hay gente en el box " << aux->valor->getIdentificador() << endl;
+		}
+		aux = aux->siguiente;
+	}
 }
 
 void Airport::vaciarBoxes()
