@@ -13,6 +13,7 @@ public:
 	void gestionarAeropuerto();
 	void crearNuevoBox();
 	void cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino);
+	void vaciarBoxes();
 	float calcularTiempoMedioAeropuerto();
 	
 private:

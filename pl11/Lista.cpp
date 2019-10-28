@@ -11,6 +11,11 @@ int Lista::getLongitud()
 	return longitud;
 }
 
+lnodo Lista::getPrimerNodo()
+{
+	return primero;
+}
+
 bool Lista::hayBoxVacio()
 {
 	lnodo aux = primero;

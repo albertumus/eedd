@@ -10,6 +10,7 @@ public:
 	
 	bool getOcupado();
 	void mostrarBox();
+	int getIdentificador();
 	Cola* getValor();
 	void vaciarBox();
 	void setPasajeroEnColaBox(Pasajero* pp);

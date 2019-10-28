@@ -4,7 +4,7 @@
 
 Airport::Airport()
 {
-	t = 0; 
+	t = 35; 
 	numeroBoxes = 0;
 }
 
@@ -36,11 +36,10 @@ void Airport::gestionarAeropuerto()
 	colaInicial.insertar(pasajero9);
 	
 	
-	crearNuevoBox();
-	crearNuevoBox();
+
 
 	
-	listaBoxes.mostrar();
+	
 	
 	int a;
 	cin >> a;
@@ -70,6 +69,32 @@ void Airport::cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino)
   }
   
   colaDestino.insertar(p);
+}
+
+void Airport::vaciarBoxes()
+{
+	lnodo aux = listaBoxes.getPrimerNodo();
+	
+	for ( int i = 0; i<listaBoxes.getLongitud();i++)
+	{
+		if ( aux->valor->getValor()->longitudCola() > 0 )
+		{
+			while ( aux->valor->getValor()->longitudCola() > 0 && aux->valor->getValor()->getPrimero()->estaSiendoAtendido() &&  aux->valor->getValor()->getPrimero()->calcularHoraSalida() <= t )
+			{
+				int horaSalidaLocal = aux->valor->getValor()->getPrimero()->calcularHoraSalida();
+				cambiarCola(aux->valor->getValor()->getPrimero(), *aux->valor->getValor(), colaFinal);
+				if ( aux->valor->getValor()->longitudCola() > 0 )
+				{
+					aux->valor->getValor()->getPrimero()->setHoraAtendido(horaSalidaLocal);
+					aux->valor->getValor()->getPrimero()->setAtendido();
+				}
+			}
+		} else
+		{
+			cout << "No hay gente en el box " << aux->valor->getIdentificador() << endl;
+		}
+		aux = aux->siguiente;
+	}
 }
 
 float Airport::calcularTiempoMedioAeropuerto()

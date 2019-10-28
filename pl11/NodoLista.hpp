@@ -13,6 +13,8 @@ private:
     NodoLista* siguiente;
     
     friend class Lista;
+	friend class Airport;
+
 };
 
 typedef NodoLista* lnodo;
