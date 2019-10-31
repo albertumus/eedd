@@ -59,6 +59,39 @@ void Lista::insertarIzq(Box* box)
 	
 }
 
+Box* Lista::getBoxMenosGente()
+{
+	lnodo aux = primero;
+	Box* auxBox;
+	int boxMasLleno = 999;
+	
+	while (aux){
+		if ( aux->valor->getValor()->longitudCola() < boxMasLleno )
+		{
+			auxBox = aux->valor;
+		}
+		aux = aux->siguiente;
+	}
+	
+	return auxBox;
+}
+
+Box* Lista::getBoxMasGente()
+{
+	lnodo aux = primero;
+	Box* auxBox;
+	int boxMasLleno = 0;
+	
+	while (aux){
+		if ( aux->valor->getValor()->longitudCola() > boxMasLleno )
+		{
+			auxBox = aux->valor;
+		}
+		aux = aux->siguiente;
+	}
+	return auxBox;
+}
+
 void Lista::insertarDerch(Box* box)
 {
 	lnodo nuevo_nodo;
@@ -108,6 +141,28 @@ void Lista::eliminarIzq()
 		primero = NULL;
 		longitud = 0;
 		delete(aux);
+	}
+}
+
+void Lista::borrarBoxesVacios()
+{	
+	lnodo aux = primero;
+	bool hayVacio = aux->valor->getValor()->longitudCola() == 0 ? true : false;
+	Box* box = aux->valor;
+
+	for ( int i=0; i<longitud; i++)
+	{
+			if(hayVacio && aux->valor->getValor()->longitudCola() != 0)
+			{
+				this->insertarDerch(box);
+				cout << "Se inserta el box " << aux->valor->getIdentificador() << endl;
+			}else{
+
+				hayVacio = true;
+			}
+		aux = aux->siguiente;
+		box = aux->valor;
+		this->eliminarIzq();
 	}
 }
 

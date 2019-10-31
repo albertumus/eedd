@@ -82,7 +82,11 @@ int Pasajero::calcularTiempoQuePasaEnAeropuerto()
 
 void Pasajero::mostrarPasajero() 
 {
-	cout << "El pasajero con id: " << this->getIdentificador() << ", prioridad: " << this->getPrioridad() << ", hora llegada: " << this->getHoraLlegada() << " y duracion: " << this->getDuracion() << endl;
+	if ( horaAtendido || identificador == 1  ) {
+		cout << "El pasajero con id: " << this->getIdentificador() << ", prioridad: " << this->getPrioridad() << ", hora llegada: " << this->getHoraLlegada() << " y duracion: " << this->getDuracion() << ". Su hora de salida del box es: " << this->calcularHoraSalida() << endl;
+	} else {
+		cout << "El pasajero con id: " << this->getIdentificador() << ", prioridad: " << this->getPrioridad() << ", hora llegada: " << this->getHoraLlegada() << " y duracion: " << this->getDuracion() << endl;
+	}
 }
 
 

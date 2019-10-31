@@ -16,6 +16,9 @@ public:
 	void eliminarDerch();
 	void mostrar();
 	bool hayBoxVacio();
+	void borrarBoxesVacios();
+	Box* getBoxMenosGente();
+	Box* getBoxMasGente();
 	lnodo getPrimerNodo();
 	Box* getPrimero();
 

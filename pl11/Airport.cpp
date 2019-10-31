@@ -35,23 +35,73 @@ void Airport::gestionarAeropuerto()
 	Pasajero* pasajero9 = new Pasajero(9,4,11,23);
 	colaInicial.insertar(pasajero9);
 	
-	
-	
 	crearNuevoBox();
-	// Se mete al primer pasajero
-	pasajero1->setAtendido();
-	pasajero1->setHoraAtendido(0);
-	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero1);
-	// Se meten mas pasajeros
-	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero2);
-	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero4);
-	listaBoxes.getPrimero()->setPasajeroEnColaBox(pasajero3);
-	cout << endl << "la longitud inicial es " << listaBoxes.getPrimero()->getValor()->longitudCola() << endl;
+	t = colaInicial.buscarPrimerTiempoLlegada();
+	
+	while ( colaInicial.longitudCola() > 0 )
+	{
+		cout << endl;
+		cout << "Pulsa para realizar iteracion: ";
+		getch();
+		cout << endl << "Momento en el que esta el aeropuerto " << t << endl;
+		colaDeLista();
+		cout << "### Gente que no ha llegado al aeropuerto ###" << endl;
+		colaInicial.mostrar();
+		cout << "### Gente lista para ser atendida ###" << endl;
+		colaListos.mostrar();
+		cout << "### Estado de los boxes ###" << endl;
+		listaBoxes.mostrar();
+		cout << endl;
+		
+		int h = colaListos.longitudCola();
+		for ( int i = 0; i<h; i++ )
+		{
+			Pasajero* aux_pasajero = colaListos.cogerPrimeroPrioridadYTiempoLlegada(); 
+			cout << "el pasajero a cambiar es " << aux_pasajero->getIdentificador() << endl;
+			Box* box_aux = listaBoxes.getBoxMenosGente();
+			if ( box_aux->getValor()->longitudCola() > 2 ) {
+				crearNuevoBox();
+				box_aux = listaBoxes.getBoxMenosGente();
+				aux_pasajero->setHoraAtendido(aux_pasajero->getHoraLlegada());
+			} else if ( box_aux->getValor()->longitudCola() == 0 )
+			{
+				aux_pasajero->setHoraAtendido(aux_pasajero->getHoraLlegada());
+			}
+			cout << "el box con menos gente es el " << box_aux->getIdentificador() << endl;
+			box_aux->getValor()->insertarPorPrioridad(aux_pasajero);
+			colaListos.borrarDeCola(aux_pasajero);
+		}
+		
+		//colaListos.vaciarCola();
+		
+		if (  colaInicial.longitudCola() > 0 ) {
+			t = colaInicial.buscarPrimerTiempoLlegada();
+			cout << endl << "La hora siguiente de llegada de un pasajero es " << t << "vaciamos los boxes en orden hasta dicha hora "<< endl;
+		}
+		
+		vaciarBoxes();
+		
+		cout << endl << "### Estado final de los boxes en el minuto " << t << " ### " << endl;
+		listaBoxes.mostrar();
+		cout << endl << "##########################" << endl;
+		cout << endl << "### Estado cola listos de gente por atender " << t << " ### " << endl;
+		colaListos.mostrar();
+		cout << endl << "##########################" << endl;
+		cout << endl << "### Estado cola final de gente atendida en " << t << " ### " << endl;
+		colaFinal.mostrar();
+		cout << endl << "##########################" << endl;
+		//listaBoxes.borrarBoxesVacios();
+	}
+	cout << endl << " ### NO QUEDA NADIE POR LLEGAR. VAMOS A VACIAR LOS BOXES ###" << endl;
+	colaInicial.mostrar();
 	finalizarBoxes();
-	cout << endl << "despues, la longitud final es " << listaBoxes.getPrimero()->getValor()->longitudCola();
-	cout << endl << "la cola final es ";
+	cout << endl << " Estado despues de vaciar los boxes ( deberian de estar vacios ): " << endl;
+	listaBoxes.mostrar();
+	cout << endl << " Estado despues de borrar los boxes vacios sobrantes ( solo deberia de haber 1 ): " << endl;
+	listaBoxes.borrarBoxesVacios();
+	cout << endl << " Mostrados la cola final para ver los pasajeros ###" << endl;
 	colaFinal.mostrar();
-	cout << "el tiempo medio de atencion es " << calcularTiempoMedioAeropuerto();
+	cout << endl << " Tiempo medio de espera de atencion del aeropuerto " << calcularTiempoMedioAeropuerto();
 	
 	
 	
@@ -59,6 +109,19 @@ void Airport::gestionarAeropuerto()
 	cin >> a;
 
 
+}
+
+void Airport::colaDeLista()
+/*
+ * Mueve a Cola de Listos todas las personas que hayan llegado al aeropuerto en el time que estemos de la cola Inicial
+ */ 
+{	
+	Pasajero* pasajeroLlegada = colaInicial.buscarPersonaLlegada(t);
+	while (pasajeroLlegada->getIdentificador() != 0){
+		cambiarCola(pasajeroLlegada, colaInicial, colaListos);
+		pasajeroLlegada =colaInicial.buscarPersonaLlegada(t);
+	}
+	
 }
 
 void Airport::crearNuevoBox()
@@ -71,15 +134,16 @@ void Airport::crearNuevoBox()
 void Airport::cambiarCola(Pasajero *p, Cola& colaOrigen, Cola& colaDestino)
 {
   int lenColaOrigen = colaOrigen.longitudCola();
-   
+
   for ( int i=0; i<lenColaOrigen; i++ )
   {
-    if ( colaOrigen.getPrimero()->getIdentificador() != p->getIdentificador() )
-    {
-      colaOrigen.insertar(colaOrigen.getPrimero());
-    }
-
-    colaOrigen.eliminar();
+		Pasajero* aux_p = colaOrigen.getPrimero();
+		colaOrigen.eliminar();
+		
+		if ( aux_p->getIdentificador() != p->getIdentificador() )
+		{
+			colaOrigen.insertar(aux_p);
+		}
   }
   
   colaDestino.insertar(p);
@@ -119,7 +183,7 @@ void Airport::vaciarBoxes()
 	{
 		if ( aux->valor->getValor()->longitudCola() > 0 )
 		{
-			while ( aux->valor->getValor()->longitudCola() > 0 && aux->valor->getValor()->getPrimero()->estaSiendoAtendido() &&  aux->valor->getValor()->getPrimero()->calcularHoraSalida() <= t )
+			while ( aux->valor->getValor()->longitudCola() > 0 &&  aux->valor->getValor()->getPrimero()->calcularHoraSalida() <= t )
 			{
 				int horaSalidaLocal = aux->valor->getValor()->getPrimero()->calcularHoraSalida();
 				cambiarCola(aux->valor->getValor()->getPrimero(), *aux->valor->getValor(), colaFinal);

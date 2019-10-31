@@ -7,7 +7,9 @@ Box::Box(int id)
 
 void Box::mostrarBox()
 {
-	cout << "Box numero " << identificador << " con gente en cola " << endl;
+	cout << "Box numero " << identificador << " con gente en cola " << getValor()->longitudCola() << endl;
+	cout << "La gente del box es ";
+	valor->mostrar();
 }
 
 bool Box::getOcupado() 

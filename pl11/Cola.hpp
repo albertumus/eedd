@@ -9,6 +9,7 @@ public:
 	~Cola();
 	
 	void insertar(Pasajero* v);
+	void insertarPorPrioridad(Pasajero* p);
 	int eliminar();
 	void mostrar();
 	void mostrarPrimero();
@@ -18,7 +19,10 @@ public:
 	void borrarDeCola(Pasajero *pp);
 	Pasajero* buscarPersonaLlegada(int t);
 	Pasajero* cogerPrimeroPrioridad(int prior);
+	Pasajero* cogerPrimeroPrioridadYTiempoLlegada();
 	Pasajero* getPrimero();
+	pnodo getPrimeroNodo();
+	void vaciarCola();
 	int calcularTiempoTotalEnAeropuero();
 
 private:

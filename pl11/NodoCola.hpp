@@ -16,6 +16,7 @@ private:
     NodoCola* siguiente;
     
     friend class Cola;
+	friend class Airport;
 };
 
 typedef NodoCola* pnodo;

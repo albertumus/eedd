@@ -6,6 +6,25 @@ Cola::Cola()
     ultimo = NULL;
 }
 
+Pasajero* Cola::cogerPrimeroPrioridadYTiempoLlegada()
+{
+	pnodo aux = primero;
+	Pasajero* auxPasajero;
+	int llegadaPrimero = 99999;
+	int prior = 0;
+	
+	while (aux){
+		if ( aux->valor->getPrioridad() >= prior && aux->valor->getHoraLlegada() < llegadaPrimero && aux->valor->getIdentificador() != 0)
+		{
+			llegadaPrimero = aux->valor->getHoraLlegada();
+			prior = aux->valor->getPrioridad();
+			auxPasajero = aux->valor;
+		}
+		aux = aux->siguiente;
+	}
+	return auxPasajero;
+}
+
 void Cola::insertar(Pasajero* v )
 /*
  * Inserta un elemento a la cola
@@ -15,9 +34,37 @@ void Cola::insertar(Pasajero* v )
     nuevo = new NodoCola(v);
     if (ultimo)
         ultimo->siguiente = nuevo;
-    ultimo = nuevo;
+		ultimo = nuevo;
     if(!primero)
         primero = nuevo;
+}
+
+void Cola::vaciarCola()
+{
+    while(primero)
+        eliminar();
+}
+
+void Cola::insertarPorPrioridad(Pasajero* p)
+{
+	pnodo nuevoPasajero;
+    nuevoPasajero = new NodoCola(p);
+	if(this->longitudCola() == 0){
+		this->primero = nuevoPasajero; 
+	}else if(this->longitudCola() == 1){
+		this->primero->siguiente = nuevoPasajero;
+		this->ultimo = nuevoPasajero;
+	}else{
+		if(this->primero->siguiente->valor->getPrioridad() > nuevoPasajero->valor->getPrioridad())
+		{
+			this->primero->siguiente->siguiente = nuevoPasajero;
+			this->ultimo = nuevoPasajero;
+		}else
+		{
+			nuevoPasajero->siguiente = this->primero->siguiente;
+			this->primero->siguiente = nuevoPasajero;
+		}
+	}
 }
 
 int Cola::eliminar()
@@ -95,7 +142,7 @@ Pasajero* Cola::cogerPrimeroPrioridad( int prior )
 {
 	pnodo aux = primero;
 	Pasajero* auxPasajero;
-	int llegadaPrimero = 999;
+	int llegadaPrimero = 99999;
 	
 	while (aux){
 		if ( aux->valor->getPrioridad() == prior && aux->valor->getHoraLlegada() <= llegadaPrimero && aux->valor->getIdentificador() != 0)
@@ -129,6 +176,11 @@ int Cola::buscarPrioridad()
 Pasajero* Cola::getPrimero()
 {
   return primero->valor;
+}
+
+pnodo Cola::getPrimeroNodo() 
+{
+	return primero;
 }
 
 void Cola::borrarDeCola(Pasajero *pp )

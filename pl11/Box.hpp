@@ -15,6 +15,7 @@ public:
 	void vaciarBox();
 	void setPasajeroEnColaBox(Pasajero* pp);
 
+	
 private:
 	Cola* valor = new Cola();
 	int identificador;

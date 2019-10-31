@@ -16,11 +16,13 @@ public:
 	void finalizarBoxes();
 	void vaciarBoxes();
 	float calcularTiempoMedioAeropuerto();
+	void colaDeLista();
 	
 private:
 	int t, numeroBoxes;
 	Lista listaBoxes;
 	Cola colaFinal;
+	Cola colaListos;
 	Cola colaInicial;
 };
 
