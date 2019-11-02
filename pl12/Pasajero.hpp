@@ -14,8 +14,6 @@ public:
 	int getHoraLlegada();
 	int getDuracion();
 	int getHoraAtendido();
-	void setAtendido();
-	bool estaSiendoAtendido();
 	void setHoraAtendido(int i);
 	void setIdentificadorBox(int iden);
 	int getIdentificadorBox();
@@ -25,7 +23,6 @@ public:
 		
 private:
 	int identificador, prioridad, horaLlegada, horaAtendido, duracion, identificadorBox;
-	bool siendoAtendido;
 };
 
 #endif // PASAJERO_HPP

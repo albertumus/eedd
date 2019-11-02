@@ -36,11 +36,6 @@ Box* Lista::getPrimero()
 	return primero->valor;
 }
 
-void Lista::reducirLongitud(int reduc) 
-{
-	longitud = longitud - reduc;
-}
-
 void Lista::insertarIzq(Box* box)
 {
 	lnodo nuevo_nodo;
@@ -147,22 +142,28 @@ void Lista::eliminarIzq()
 void Lista::borrarBoxesVacios()
 {	
 	lnodo aux = primero;
-	bool hayVacio = aux->valor->getValor()->longitudCola() == 0 ? true : false;
-	Box* box = aux->valor;
+	bool hayVacio = false;
+	int lon = longitud;
 
-	for ( int i=0; i<longitud; i++)
+	for ( int i=0; i<lon; i++)
 	{
-			if(hayVacio && aux->valor->getValor()->longitudCola() != 0)
+		if( aux->valor->getValor()->longitudCola() == 0)
+		{
+			if ( hayVacio)
 			{
-				this->insertarDerch(box);
-				cout << "Se inserta el box " << aux->valor->getIdentificador() << endl;
-			}else{
-
+				
+			} else
+			{
+				insertarDerch(aux->valor);
 				hayVacio = true;
 			}
+
+		}
+		else{
+			insertarDerch(aux->valor);
+		}
 		aux = aux->siguiente;
-		box = aux->valor;
-		this->eliminarIzq();
+		eliminarIzq();
 	}
 }
 

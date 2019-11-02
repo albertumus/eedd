@@ -39,12 +39,6 @@ void Cola::insertar(Pasajero* v )
         primero = nuevo;
 }
 
-void Cola::vaciarCola()
-{
-    while(primero)
-        eliminar();
-}
-
 void Cola::insertarPorPrioridad(Pasajero* p)
 {
 	pnodo nuevoPasajero;
@@ -137,40 +131,6 @@ int Cola::buscarPrimerTiempoLlegada() {
 	}
 	
 	return llegadaPrimero;
-}
-Pasajero* Cola::cogerPrimeroPrioridad( int prior )
-{
-	pnodo aux = primero;
-	Pasajero* auxPasajero;
-	int llegadaPrimero = 99999;
-	
-	while (aux){
-		if ( aux->valor->getPrioridad() == prior && aux->valor->getHoraLlegada() <= llegadaPrimero && aux->valor->getIdentificador() != 0)
-		{
-			llegadaPrimero = aux->valor->getHoraLlegada();
-			auxPasajero = aux->valor;
-		}
-		aux = aux->siguiente;
-	}
-	return auxPasajero;
-}
-
-int Cola::buscarPrioridad() 
-{
-	int priodadMax = 0;
-    pnodo aux = primero;
-
-	cout << "Este es el nodo auxiliar que guarda el primero de la cola: " << aux << endl;
-
-    while(aux) {
-        if ( aux->valor->getPrioridad() > priodadMax )
-		{
-			priodadMax = aux->valor->getPrioridad();
-		}
-		
-        aux = aux->siguiente;
-    }
-	return priodadMax;
 }
 
 Pasajero* Cola::getPrimero()

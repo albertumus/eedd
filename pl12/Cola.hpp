@@ -14,15 +14,12 @@ public:
 	void mostrar();
 	void mostrarPrimero();
 	int longitudCola();
-	int buscarPrioridad();
 	int buscarPrimerTiempoLlegada();
 	void borrarDeCola(Pasajero *pp);
 	Pasajero* buscarPersonaLlegada(int t);
-	Pasajero* cogerPrimeroPrioridad(int prior);
 	Pasajero* cogerPrimeroPrioridadYTiempoLlegada();
 	Pasajero* getPrimero();
 	pnodo getPrimeroNodo();
-	void vaciarCola();
 	int calcularTiempoTotalEnAeropuero();
 
 private:

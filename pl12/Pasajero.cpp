@@ -6,7 +6,6 @@ Pasajero::Pasajero(int id, int prior, int horalleg, int dur)
 	prioridad = prior;
 	horaLlegada = horalleg;
 	duracion = dur;
-	siendoAtendido = false;
 }
 
 int Pasajero::getIdentificador()
@@ -23,16 +22,6 @@ int Pasajero::getPrioridad()
  */
 {
 	return prioridad;
-}
-
-bool Pasajero::estaSiendoAtendido()
-{
-	return siendoAtendido;
-}
-
-void Pasajero::setAtendido()
-{
-	siendoAtendido = !siendoAtendido;
 }
 
 void Pasajero::setIdentificadorBox(int iden)

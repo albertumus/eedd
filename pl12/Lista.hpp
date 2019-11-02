@@ -9,7 +9,6 @@ public:
 	~Lista();
 	
 	int getLongitud();
-	void reducirLongitud(int reduc = 1);
 	void insertarIzq(Box* box);
 	void insertarDerch(Box* box);
 	void eliminarIzq();

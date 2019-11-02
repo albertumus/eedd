@@ -7,8 +7,7 @@ class Box
 public:
 	Box( int id );
 	~Box();
-	
-	bool getOcupado();
+
 	void mostrarBox();
 	int getIdentificador();
 	Cola* getValor();

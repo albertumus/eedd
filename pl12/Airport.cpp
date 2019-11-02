@@ -4,7 +4,7 @@
 
 Airport::Airport()
 {
-	t = 35; 
+	t = 0; 
 	numeroBoxes = 0;
 }
 
@@ -24,9 +24,9 @@ void Airport::gestionarAeropuerto()
 	colaInicial.insertar(pasajero3);
 	Pasajero* pasajero4 = new Pasajero(4,5,7,23);
 	colaInicial.insertar(pasajero4);
-	Pasajero* pasajero5 = new Pasajero(5,3,21,20);
+	Pasajero* pasajero5 = new Pasajero(5,3,300,20);
 	colaInicial.insertar(pasajero5);
-	Pasajero* pasajero6 = new Pasajero(6,2,18,14);
+	Pasajero* pasajero6 = new Pasajero(6,2,200,14);
 	colaInicial.insertar(pasajero6);
 	Pasajero* pasajero7 = new Pasajero(7,6,9,16);
 	colaInicial.insertar(pasajero7);
@@ -37,6 +37,7 @@ void Airport::gestionarAeropuerto()
 	
 	crearNuevoBox();
 	t = colaInicial.buscarPrimerTiempoLlegada();
+	
 	
 	while ( colaInicial.longitudCola() > 0 )
 	{
@@ -72,14 +73,13 @@ void Airport::gestionarAeropuerto()
 			colaListos.borrarDeCola(aux_pasajero);
 		}
 		
-		//colaListos.vaciarCola();
-		
 		if (  colaInicial.longitudCola() > 0 ) {
 			t = colaInicial.buscarPrimerTiempoLlegada();
 			cout << endl << "La hora siguiente de llegada de un pasajero es " << t << "vaciamos los boxes en orden hasta dicha hora "<< endl;
 		}
 		
 		vaciarBoxes();
+		listaBoxes.borrarBoxesVacios();
 		
 		cout << endl << "### Estado final de los boxes en el minuto " << t << " ### " << endl;
 		listaBoxes.mostrar();
@@ -90,7 +90,7 @@ void Airport::gestionarAeropuerto()
 		cout << endl << "### Estado cola final de gente atendida en " << t << " ### " << endl;
 		colaFinal.mostrar();
 		cout << endl << "##########################" << endl;
-		//listaBoxes.borrarBoxesVacios();
+		
 	}
 	cout << endl << " ### NO QUEDA NADIE POR LLEGAR. VAMOS A VACIAR LOS BOXES ###" << endl;
 	colaInicial.mostrar();
@@ -164,7 +164,6 @@ void Airport::finalizarBoxes()
 				if ( aux->valor->getValor()->longitudCola() > 0 )
 				{
 					aux->valor->getValor()->getPrimero()->setHoraAtendido(horaSalidaLocal);
-					aux->valor->getValor()->getPrimero()->setAtendido();
 				}
 			}
 		} else
@@ -190,7 +189,6 @@ void Airport::vaciarBoxes()
 				if ( aux->valor->getValor()->longitudCola() > 0 )
 				{
 					aux->valor->getValor()->getPrimero()->setHoraAtendido(horaSalidaLocal);
-					aux->valor->getValor()->getPrimero()->setAtendido();
 				}
 			}
 		} else

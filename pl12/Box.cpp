@@ -12,20 +12,6 @@ void Box::mostrarBox()
 	valor->mostrar();
 }
 
-bool Box::getOcupado() 
-/*
- * Devuelve el estado de la variable ocupado
- */
-{
-	if ( valor->getPrimero()->estaSiendoAtendido() )
-	{
-		return true;
-	} else 
-	{
-		return false;
-	}
-}
-
 int Box::getIdentificador()
 {
 	return identificador;
