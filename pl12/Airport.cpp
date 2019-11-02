@@ -24,9 +24,9 @@ void Airport::gestionarAeropuerto()
 	colaInicial.insertar(pasajero3);
 	Pasajero* pasajero4 = new Pasajero(4,5,7,23);
 	colaInicial.insertar(pasajero4);
-	Pasajero* pasajero5 = new Pasajero(5,3,300,20);
+	Pasajero* pasajero5 = new Pasajero(5,3,21,20);
 	colaInicial.insertar(pasajero5);
-	Pasajero* pasajero6 = new Pasajero(6,2,200,14);
+	Pasajero* pasajero6 = new Pasajero(6,2,18,14);
 	colaInicial.insertar(pasajero6);
 	Pasajero* pasajero7 = new Pasajero(7,6,9,16);
 	colaInicial.insertar(pasajero7);
