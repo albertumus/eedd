@@ -9,10 +9,14 @@ public:
 	ArbolBusqueda(Pasajero* psj);
 	~ArbolBusqueda();
 	
-	Pasajero* getRaiz();
+	Pasajero* getValueRaiz();
+	anodo getRaiz();
+	int numeroNodos();
 
 private:
-    anodo raiz;
+    int numeroNodos_aux(anodo arbol);
+	anodo raiz;
+	
 
 };
 

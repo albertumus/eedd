@@ -45,8 +45,22 @@ void Test::test_to_pass() {
 	Pasajero* pasajero_nulo_test = new Pasajero(0,0,0,0);
 	pasajero_nulo_test->setSatisfaccion(0);
 	ArbolBusqueda* arbol_test = new ArbolBusqueda(pasajero_nulo_test);
-	assert(arbol_test->getRaiz() == pasajero_nulo_test);
-	assert(arbol_test->getRaiz()->getSatisfaccion() == 0);
+	assert(arbol_test->getValueRaiz() == pasajero_nulo_test);
+	assert(arbol_test->getValueRaiz()->getSatisfaccion() == 0);
+	
+	// Test 'insertarPorSatisfaccion'
+
+	
+	// Test 'numeroNodos' 
+	assert(arbol_test->numeroNodos() == 0);
+	NodoArbol* r1 = new NodoArbol(pasajero_test_2);
+	arbol_test->getRaiz()->der = r1;
+	assert(arbol_test->numeroNodos() ==1);
+	NodoArbol* r2 = new NodoArbol(pasajero_test_3);
+	arbol_test->getRaiz()->der = r2;
+	assert(arbol_test->numeroNodos() ==1);
+	arbol_test->getRaiz()->izq = r1;
+	assert(arbol_test->numeroNodos() ==2);
 	
 
 }
