@@ -22,6 +22,7 @@ public:
 	Pasajero* cogerPrimeroPrioridad(int prior);
 	Pasajero* getPrimero();
 	int calcularTiempoTotalEnAeropuero();
+	void setearSatisfaccion(double t);
 
 private:
     pnodo primero, ultimo;

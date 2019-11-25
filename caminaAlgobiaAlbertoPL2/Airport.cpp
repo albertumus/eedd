@@ -47,7 +47,7 @@ void Airport::gestionarAeropuerto()
 	{
 		cout << endl;
 		cout << "Pulsa para realizar iteracion: ";
-		getch();
+		//getch();
 		
 		cout << endl << "Tiempo actual del aeropuerto: " << t << endl;
 		cout << endl;

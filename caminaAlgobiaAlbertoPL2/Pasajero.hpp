@@ -20,9 +20,13 @@ public:
 	int calcularHoraSalida();
 	int calcularTiempoQuePasaEnAeropuerto();
 	void mostrarPasajero();
+	void setSatisfaccion(double satis);
+	double getSatisfaccion();
+	void calcularSatisfaccion(double t);
 		
 private:
 	int identificador, prioridad, horaLlegada, horaAtendido, duracion, identificadorBox;
+	double satisfaccion;
 };
 
 #endif // PASAJERO_HPP

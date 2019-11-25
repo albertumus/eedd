@@ -179,6 +179,17 @@ int Cola::calcularTiempoTotalEnAeropuero()
 	return sumatorio;
 }
 
+void Cola::setearSatisfaccion(double t) {
+	pnodo aux = primero;
+    cout << endl;
+    while(aux) {
+        aux->valor->calcularSatisfaccion(t);
+        aux = aux->siguiente;
+    }
+    cout << endl;
+	
+}
+
 Cola::~Cola()
 /*
  * Destructor de la cola 

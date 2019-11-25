@@ -74,6 +74,18 @@ void Pasajero::mostrarPasajero()
 	cout << "El pasajero con id: " << this->getIdentificador() << ", prioridad: " << this->getPrioridad() << ", hora llegada: " << this->getHoraLlegada() << " y duracion: " << this->getDuracion() << endl;
 }
 
+void Pasajero::setSatisfaccion(double satis) {
+	satisfaccion = satis;
+}
+
+double Pasajero::getSatisfaccion() {
+	return satisfaccion;
+}
+
+void Pasajero::calcularSatisfaccion(double t) {
+	satisfaccion = t - this->calcularTiempoQuePasaEnAeropuerto();
+}
+
 
 Pasajero::~Pasajero()
 {
