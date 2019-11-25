@@ -2,6 +2,7 @@
 #include <assert.h> 
 #include "Pasajero.hpp"
 #include "Cola.hpp"
+#include "ArbolBusqueda.hpp"
 
 Test::Test()
 {
@@ -41,6 +42,11 @@ void Test::test_to_pass() {
 	assert (pasajero_test_3->getSatisfaccion() == -9.5);
 	
 	// Test 'crearArbolConPasajero'
+	Pasajero* pasajero_nulo_test = new Pasajero(0,0,0,0);
+	pasajero_nulo_test->setSatisfaccion(0);
+	ArbolBusqueda* arbol_test = new ArbolBusqueda(pasajero_nulo_test);
+	assert(arbol_test->getRaiz() == pasajero_nulo_test);
+	assert(arbol_test->getRaiz()->getSatisfaccion() == 0);
 	
 
 }

@@ -1,1 +1,1 @@
-./Debug/Test.cpp.o ./Debug/Cola.cpp.o ./Debug/NodoCola.cpp.o ./Debug/Airport.cpp.o ./Debug/main.cpp.o ./Debug/NodoLista.cpp.o ./Debug/Box.cpp.o ./Debug/Lista.cpp.o ./Debug/Pasajero.cpp.o   
+./Debug/NodoArbol.cpp.o ./Debug/ArbolBusqueda.cpp.o ./Debug/Test.cpp.o ./Debug/Cola.cpp.o ./Debug/NodoCola.cpp.o ./Debug/Airport.cpp.o ./Debug/main.cpp.o ./Debug/NodoLista.cpp.o ./Debug/Box.cpp.o ./Debug/Lista.cpp.o ./Debug/Pasajero.cpp.o   

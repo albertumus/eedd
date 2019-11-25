@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="caminaAlgobiaAlbertoPL2" Version="10.0.0" InternalType="Console">
   <VirtualDirectory Name="headers-files">
+    <File Name="NodoArbol.hpp"/>
+    <File Name="ArbolBusqueda.hpp"/>
     <File Name="Test.hpp"/>
     <File Name="Lista.hpp"/>
     <File Name="Box.hpp"/>
@@ -103,6 +105,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="source-files">
+    <File Name="NodoArbol.cpp"/>
+    <File Name="ArbolBusqueda.cpp"/>
     <File Name="Test.cpp"/>
     <File Name="Pasajero.cpp"/>
     <File Name="NodoLista.cpp"/>
