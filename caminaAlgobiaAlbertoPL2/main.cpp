@@ -1,7 +1,8 @@
-#include <stdio.h>
+#include <Airport.hpp>
 
 int main(int argc, char **argv)
 {
-	printf("hello world\n");
-	return 0;
+	Airport* a1 = new Airport();
+	a1->gestionarAeropuerto();
+	
 }

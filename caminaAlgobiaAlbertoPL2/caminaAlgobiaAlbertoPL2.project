@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="caminaAlgobiaAlbertoPL2" Version="10.0.0" InternalType="Console">
+  <VirtualDirectory Name="headers-files">
+    <File Name="Lista.hpp"/>
+    <File Name="Box.hpp"/>
+    <File Name="Pasajero.hpp"/>
+    <File Name="Cola.hpp"/>
+    <File Name="NodoLista.hpp"/>
+    <File Name="NodoCola.hpp"/>
+    <File Name="Airport.hpp"/>
+  </VirtualDirectory>
   <Description/>
   <Dependencies/>
   <Settings Type="Executable">
@@ -92,7 +101,14 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="src">
+  <VirtualDirectory Name="source-files">
+    <File Name="Pasajero.cpp"/>
+    <File Name="NodoLista.cpp"/>
+    <File Name="NodoCola.cpp"/>
+    <File Name="Lista.cpp"/>
+    <File Name="Cola.cpp"/>
+    <File Name="Box.cpp"/>
+    <File Name="Airport.cpp"/>
     <File Name="main.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>
