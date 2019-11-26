@@ -1,25 +1,29 @@
 #ifndef ARBOLBUSQUEDA_HPP
 #define ARBOLBUSQUEDA_HPP
-#include "NodoArbol.hpp"
-
+#include "Pasajero.hpp"
 
 class ArbolBusqueda
 {
 public:
-	ArbolBusqueda(Pasajero* psj);
+	ArbolBusqueda(Pasajero* psj, ArbolBusqueda* i = NULL, ArbolBusqueda* der = NULL);
 	~ArbolBusqueda();
 	
-	Pasajero* getValueRaiz();
-	anodo getRaiz();
+	void setDer(ArbolBusqueda* d);
+	void setIzq(ArbolBusqueda* i);
+	ArbolBusqueda* getDer();
+	ArbolBusqueda* getIzq();
+	Pasajero* getRaiz();
+	
 	void insertarPorSatisfaccion(Pasajero* psj);
-	int numeroNodos();
-
-private:
-    int numeroNodos_aux(anodo arbol);
-	void insertarPorSatisfaccion_aux(anodo arbol, anodo e);
-	anodo raiz;
+	int calcularNumeroNodos();
 	
 
+private:
+	Pasajero* valor;
+	ArbolBusqueda* izq;
+	ArbolBusqueda* der;
+	
+	int numeroNodos();
 };
 
 #endif // ARBOLBUSQUEDA_HPP

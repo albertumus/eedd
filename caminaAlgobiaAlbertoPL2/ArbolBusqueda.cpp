@@ -1,31 +1,53 @@
 #include "ArbolBusqueda.hpp"clTabCtrl
 
-ArbolBusqueda::ArbolBusqueda(Pasajero* psj)
+ArbolBusqueda::ArbolBusqueda(Pasajero* psj, ArbolBusqueda* i, ArbolBusqueda* d)
 {
-	NodoArbol* r = new NodoArbol(psj);
-	raiz = r;
+	valor = psj;
+	der = d;
+	izq = i;
 }
 
-Pasajero* ArbolBusqueda::getValueRaiz() {
-	return raiz->valor;
+void ArbolBusqueda::setDer(ArbolBusqueda* d) {
+	der = d;
+}
+void ArbolBusqueda::setIzq(ArbolBusqueda* i) {
+	izq = i;
+}
+ArbolBusqueda* ArbolBusqueda::getDer(){
+	return der;
+}
+ArbolBusqueda* ArbolBusqueda::getIzq() {
+	return izq;
 }
 
-anodo ArbolBusqueda::getRaiz() {
-	return raiz;
+Pasajero* ArbolBusqueda::getRaiz() {
+	return valor;
 }
 
-void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* pjs) {
-	anodo nuevo_nodo;
-	nuevo_nodo = new NodoArbol(pjs);
+void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* psj) {
 	
-	if ( nuevo_nodo->valor->getSatisfaccion() != 0) {
-		insertarPorSatisfaccion_aux(raiz, nuevo_nodo);
+	if ( this == NULL ) {
+		ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
 	} else {
-		cout << "ERROR: El pasajero debe de tener satisfaccion";
+		if ( psj->getSatisfaccion() < this->valor->getSatisfaccion() ) {
+			if ( this->izq == NULL ) {
+				ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
+				this->izq = nuevo_arbol;
+			} else {
+				this->izq->insertarPorSatisfaccion(psj);
+			}
+		} else {
+			if ( this->der == NULL ) {
+				ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
+				this->der = nuevo_arbol;
+			} else{
+				this->der->insertarPorSatisfaccion(psj);
+			}
+		}
 	}
 	
 }
-
+/*
 void ArbolBusqueda::insertarPorSatisfaccion_aux(anodo arbol, anodo e) {
 	if ( arbol == NULL ) {
 		arbol = e;
@@ -45,16 +67,17 @@ void ArbolBusqueda::insertarPorSatisfaccion_aux(anodo arbol, anodo e) {
 		}
 	}
 }
+*/
 
-int ArbolBusqueda::numeroNodos() {
-	return this->numeroNodos_aux(raiz)-1;
+int ArbolBusqueda::calcularNumeroNodos() {
+	return this->numeroNodos() -1;
 }
 
-int ArbolBusqueda::numeroNodos_aux(anodo arbol) {
-	if (arbol == NULL) {
+int ArbolBusqueda::numeroNodos() {
+	if ( this == NULL ) {
 		return 0;
 	} else {
-		return 1 + numeroNodos_aux(arbol->izq) + numeroNodos_aux(arbol->der);
+		return 1 + izq->numeroNodos() + der->numeroNodos();
 	}
 }
 

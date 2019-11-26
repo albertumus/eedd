@@ -45,34 +45,35 @@ void Test::test_to_pass() {
 	Pasajero* pasajero_nulo_test = new Pasajero(0,0,0,0);
 	pasajero_nulo_test->setSatisfaccion(0);
 	ArbolBusqueda* arbol_test = new ArbolBusqueda(pasajero_nulo_test);
-	assert(arbol_test->getValueRaiz() == pasajero_nulo_test);
-	assert(arbol_test->getValueRaiz()->getSatisfaccion() == 0);
+	assert(arbol_test->getRaiz() == pasajero_nulo_test);
+	assert(arbol_test->getRaiz()->getSatisfaccion() == 0);
 	
 	// Test 'numeroNodos' 
-	assert(arbol_test->numeroNodos() == 0);
-	NodoArbol* r1 = new NodoArbol(pasajero_test_2);
-	arbol_test->getRaiz()->der = r1;
-	assert(arbol_test->numeroNodos() ==1);
-	NodoArbol* r2 = new NodoArbol(pasajero_test_3);
-	arbol_test->getRaiz()->der = r2;
-	assert(arbol_test->numeroNodos() ==1);
-	arbol_test->getRaiz()->izq = r1;
-	assert(arbol_test->numeroNodos() ==2);
+	assert(arbol_test->calcularNumeroNodos() == 0);
+	ArbolBusqueda* r1 = new ArbolBusqueda(pasajero_test_2);
+	arbol_test->setDer(r1);
+	assert(arbol_test->calcularNumeroNodos() ==1);
+	ArbolBusqueda* r2 = new ArbolBusqueda(pasajero_test_3);
+	arbol_test->setDer(r2);
+	assert(arbol_test->calcularNumeroNodos() ==1);
+	arbol_test->setIzq(r1);
+	assert(arbol_test->calcularNumeroNodos() ==2);
 	
 	// Test 'insertarPorSatisfaccion'
 	ArbolBusqueda* arbol_test_inserccion = new ArbolBusqueda(pasajero_nulo_test);
 	assert (pasajero_test->getSatisfaccion() == -19.5);
 	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test);
-	assert(arbol_test_inserccion->numeroNodos() ==1);
+	assert(arbol_test_inserccion->calcularNumeroNodos() == 1);
+	assert(arbol_test_inserccion->getIzq()->getRaiz()->getSatisfaccion() == -19.5);
 	assert (pasajero_test_2->getSatisfaccion() == 0.5);
 	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test_2);
-	assert(arbol_test_inserccion->numeroNodos() ==2);
-	assert(arbol_test_inserccion->getRaiz()->der->valor->getIdentificador() == 2);
+	assert(arbol_test_inserccion->calcularNumeroNodos() ==2);
+	assert(arbol_test_inserccion->getDer()->getRaiz()->getIdentificador() == 2);
 	assert (pasajero_test_3->getSatisfaccion() == -9.5);
 	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test_3);
-	assert(arbol_test_inserccion->numeroNodos() ==3);
-	assert(arbol_test_inserccion->getRaiz()->izq->der->valor->getIdentificador() == 3);
-
+	assert(arbol_test_inserccion->calcularNumeroNodos() ==3);
+	assert(arbol_test_inserccion->getIzq()->getDer()->getRaiz()->getIdentificador() == 3);
+	
 }
 
 Test::~Test()
