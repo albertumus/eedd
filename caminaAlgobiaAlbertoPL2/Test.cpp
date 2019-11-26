@@ -28,9 +28,9 @@ void Test::test_to_pass() {
 	
 	// Test 'setearSatisfaccion' en Cola
 	Cola* cola_test =  new Cola();
-	Pasajero* pasajero_test_2 = new Pasajero(1,6,0,20);
+	Pasajero* pasajero_test_2 = new Pasajero(2,6,0,20);
 	pasajero_test_2->setHoraAtendido(0);
-	Pasajero* pasajero_test_3 = new Pasajero(1,6,0,20);
+	Pasajero* pasajero_test_3 = new Pasajero(3,6,0,20);
 	pasajero_test_3->setHoraAtendido(10);
 	cola_test->insertar(pasajero_test);
 	cola_test->insertar(pasajero_test_2);
@@ -48,9 +48,6 @@ void Test::test_to_pass() {
 	assert(arbol_test->getValueRaiz() == pasajero_nulo_test);
 	assert(arbol_test->getValueRaiz()->getSatisfaccion() == 0);
 	
-	// Test 'insertarPorSatisfaccion'
-
-	
 	// Test 'numeroNodos' 
 	assert(arbol_test->numeroNodos() == 0);
 	NodoArbol* r1 = new NodoArbol(pasajero_test_2);
@@ -62,6 +59,19 @@ void Test::test_to_pass() {
 	arbol_test->getRaiz()->izq = r1;
 	assert(arbol_test->numeroNodos() ==2);
 	
+	// Test 'insertarPorSatisfaccion'
+	ArbolBusqueda* arbol_test_inserccion = new ArbolBusqueda(pasajero_nulo_test);
+	assert (pasajero_test->getSatisfaccion() == -19.5);
+	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test);
+	assert(arbol_test_inserccion->numeroNodos() ==1);
+	assert (pasajero_test_2->getSatisfaccion() == 0.5);
+	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test_2);
+	assert(arbol_test_inserccion->numeroNodos() ==2);
+	assert(arbol_test_inserccion->getRaiz()->der->valor->getIdentificador() == 2);
+	assert (pasajero_test_3->getSatisfaccion() == -9.5);
+	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test_3);
+	assert(arbol_test_inserccion->numeroNodos() ==3);
+	assert(arbol_test_inserccion->getRaiz()->izq->der->valor->getIdentificador() == 3);
 
 }
 

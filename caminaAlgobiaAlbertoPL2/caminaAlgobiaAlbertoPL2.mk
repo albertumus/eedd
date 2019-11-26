@@ -62,8 +62,8 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) $(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix) $(IntermediateDirectory)/Test.cpp$(ObjectSuffix) $(IntermediateDirectory)/Cola.cpp$(ObjectSuffix) $(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix) $(IntermediateDirectory)/Airport.cpp$(ObjectSuffix) $(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix) $(IntermediateDirectory)/Box.cpp$(ObjectSuffix) $(IntermediateDirectory)/Lista.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/Pasajero.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Airport.cpp$(ObjectSuffix) $(IntermediateDirectory)/Box.cpp$(ObjectSuffix) $(IntermediateDirectory)/Lista.cpp$(ObjectSuffix) $(IntermediateDirectory)/Cola.cpp$(ObjectSuffix) $(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix) $(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix) $(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) $(IntermediateDirectory)/Test.cpp$(ObjectSuffix) $(IntermediateDirectory)/Pasajero.cpp$(ObjectSuffix) \
+	$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix) 
 
 
 
@@ -94,54 +94,6 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix): NodoArbol.cpp $(IntermediateDirectory)/NodoArbol.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/NodoArbol.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/NodoArbol.cpp$(DependSuffix): NodoArbol.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/NodoArbol.cpp$(DependSuffix) -MM NodoArbol.cpp
-
-$(IntermediateDirectory)/NodoArbol.cpp$(PreprocessSuffix): NodoArbol.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/NodoArbol.cpp$(PreprocessSuffix) NodoArbol.cpp
-
-$(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix): ArbolBusqueda.cpp $(IntermediateDirectory)/ArbolBusqueda.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/ArbolBusqueda.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/ArbolBusqueda.cpp$(DependSuffix): ArbolBusqueda.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ArbolBusqueda.cpp$(DependSuffix) -MM ArbolBusqueda.cpp
-
-$(IntermediateDirectory)/ArbolBusqueda.cpp$(PreprocessSuffix): ArbolBusqueda.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ArbolBusqueda.cpp$(PreprocessSuffix) ArbolBusqueda.cpp
-
-$(IntermediateDirectory)/Test.cpp$(ObjectSuffix): Test.cpp $(IntermediateDirectory)/Test.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Test.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Test.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Test.cpp$(DependSuffix): Test.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Test.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Test.cpp$(DependSuffix) -MM Test.cpp
-
-$(IntermediateDirectory)/Test.cpp$(PreprocessSuffix): Test.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Test.cpp$(PreprocessSuffix) Test.cpp
-
-$(IntermediateDirectory)/Cola.cpp$(ObjectSuffix): Cola.cpp $(IntermediateDirectory)/Cola.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Cola.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Cola.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Cola.cpp$(DependSuffix): Cola.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Cola.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Cola.cpp$(DependSuffix) -MM Cola.cpp
-
-$(IntermediateDirectory)/Cola.cpp$(PreprocessSuffix): Cola.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Cola.cpp$(PreprocessSuffix) Cola.cpp
-
-$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix): NodoCola.cpp $(IntermediateDirectory)/NodoCola.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/NodoCola.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/NodoCola.cpp$(DependSuffix): NodoCola.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/NodoCola.cpp$(DependSuffix) -MM NodoCola.cpp
-
-$(IntermediateDirectory)/NodoCola.cpp$(PreprocessSuffix): NodoCola.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/NodoCola.cpp$(PreprocessSuffix) NodoCola.cpp
-
-$(IntermediateDirectory)/Airport.cpp$(ObjectSuffix): Airport.cpp $(IntermediateDirectory)/Airport.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Airport.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Airport.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Airport.cpp$(DependSuffix): Airport.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Airport.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Airport.cpp$(DependSuffix) -MM Airport.cpp
-
-$(IntermediateDirectory)/Airport.cpp$(PreprocessSuffix): Airport.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Airport.cpp$(PreprocessSuffix) Airport.cpp
-
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
@@ -150,13 +102,13 @@ $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
 
-$(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix): NodoLista.cpp $(IntermediateDirectory)/NodoLista.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/NodoLista.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/NodoLista.cpp$(DependSuffix): NodoLista.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/NodoLista.cpp$(DependSuffix) -MM NodoLista.cpp
+$(IntermediateDirectory)/Airport.cpp$(ObjectSuffix): Airport.cpp $(IntermediateDirectory)/Airport.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Airport.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Airport.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Airport.cpp$(DependSuffix): Airport.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Airport.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Airport.cpp$(DependSuffix) -MM Airport.cpp
 
-$(IntermediateDirectory)/NodoLista.cpp$(PreprocessSuffix): NodoLista.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/NodoLista.cpp$(PreprocessSuffix) NodoLista.cpp
+$(IntermediateDirectory)/Airport.cpp$(PreprocessSuffix): Airport.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Airport.cpp$(PreprocessSuffix) Airport.cpp
 
 $(IntermediateDirectory)/Box.cpp$(ObjectSuffix): Box.cpp $(IntermediateDirectory)/Box.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Box.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Box.cpp$(ObjectSuffix) $(IncludePath)
@@ -174,6 +126,46 @@ $(IntermediateDirectory)/Lista.cpp$(DependSuffix): Lista.cpp
 $(IntermediateDirectory)/Lista.cpp$(PreprocessSuffix): Lista.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Lista.cpp$(PreprocessSuffix) Lista.cpp
 
+$(IntermediateDirectory)/Cola.cpp$(ObjectSuffix): Cola.cpp $(IntermediateDirectory)/Cola.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Cola.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Cola.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Cola.cpp$(DependSuffix): Cola.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Cola.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Cola.cpp$(DependSuffix) -MM Cola.cpp
+
+$(IntermediateDirectory)/Cola.cpp$(PreprocessSuffix): Cola.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Cola.cpp$(PreprocessSuffix) Cola.cpp
+
+$(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix): ArbolBusqueda.cpp $(IntermediateDirectory)/ArbolBusqueda.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/ArbolBusqueda.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ArbolBusqueda.cpp$(DependSuffix): ArbolBusqueda.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ArbolBusqueda.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ArbolBusqueda.cpp$(DependSuffix) -MM ArbolBusqueda.cpp
+
+$(IntermediateDirectory)/ArbolBusqueda.cpp$(PreprocessSuffix): ArbolBusqueda.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ArbolBusqueda.cpp$(PreprocessSuffix) ArbolBusqueda.cpp
+
+$(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix): NodoLista.cpp $(IntermediateDirectory)/NodoLista.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/NodoLista.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/NodoLista.cpp$(DependSuffix): NodoLista.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/NodoLista.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/NodoLista.cpp$(DependSuffix) -MM NodoLista.cpp
+
+$(IntermediateDirectory)/NodoLista.cpp$(PreprocessSuffix): NodoLista.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/NodoLista.cpp$(PreprocessSuffix) NodoLista.cpp
+
+$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix): NodoArbol.cpp $(IntermediateDirectory)/NodoArbol.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/NodoArbol.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/NodoArbol.cpp$(DependSuffix): NodoArbol.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/NodoArbol.cpp$(DependSuffix) -MM NodoArbol.cpp
+
+$(IntermediateDirectory)/NodoArbol.cpp$(PreprocessSuffix): NodoArbol.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/NodoArbol.cpp$(PreprocessSuffix) NodoArbol.cpp
+
+$(IntermediateDirectory)/Test.cpp$(ObjectSuffix): Test.cpp $(IntermediateDirectory)/Test.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Test.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Test.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Test.cpp$(DependSuffix): Test.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Test.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Test.cpp$(DependSuffix) -MM Test.cpp
+
+$(IntermediateDirectory)/Test.cpp$(PreprocessSuffix): Test.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Test.cpp$(PreprocessSuffix) Test.cpp
+
 $(IntermediateDirectory)/Pasajero.cpp$(ObjectSuffix): Pasajero.cpp $(IntermediateDirectory)/Pasajero.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/Pasajero.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Pasajero.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Pasajero.cpp$(DependSuffix): Pasajero.cpp
@@ -181,6 +173,14 @@ $(IntermediateDirectory)/Pasajero.cpp$(DependSuffix): Pasajero.cpp
 
 $(IntermediateDirectory)/Pasajero.cpp$(PreprocessSuffix): Pasajero.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Pasajero.cpp$(PreprocessSuffix) Pasajero.cpp
+
+$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix): NodoCola.cpp $(IntermediateDirectory)/NodoCola.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/admin/Desktop/repositorios/eedd/caminaAlgobiaAlbertoPL2/NodoCola.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/NodoCola.cpp$(DependSuffix): NodoCola.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/NodoCola.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/NodoCola.cpp$(DependSuffix) -MM NodoCola.cpp
+
+$(IntermediateDirectory)/NodoCola.cpp$(PreprocessSuffix): NodoCola.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/NodoCola.cpp$(PreprocessSuffix) NodoCola.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

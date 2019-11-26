@@ -11,10 +11,12 @@ public:
 	
 	Pasajero* getValueRaiz();
 	anodo getRaiz();
+	void insertarPorSatisfaccion(Pasajero* psj);
 	int numeroNodos();
 
 private:
     int numeroNodos_aux(anodo arbol);
+	void insertarPorSatisfaccion_aux(anodo arbol, anodo e);
 	anodo raiz;
 	
 
