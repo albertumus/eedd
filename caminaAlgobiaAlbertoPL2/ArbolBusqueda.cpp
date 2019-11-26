@@ -24,28 +24,25 @@ Pasajero* ArbolBusqueda::getRaiz() {
 	return valor;
 }
 
-void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* psj) {
-	
-	if ( this == NULL ) {
-		ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
-	} else {
-		if ( psj->getSatisfaccion() < this->valor->getSatisfaccion() ) {
-			if ( this->izq == NULL ) {
-				ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
-				this->izq = nuevo_arbol;
-			} else {
-				this->izq->insertarPorSatisfaccion(psj);
-			}
+ArbolBusqueda* ArbolBusqueda::nuevoNodo(Pasajero* psj) {
+	ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
+	return nuevo_arbol;
+}
+
+void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* psj) {	
+	if ( psj->getSatisfaccion() < this->valor->getSatisfaccion() ) {
+		if ( this->izq == NULL ) {
+			this->izq = this->nuevoNodo(psj);
 		} else {
-			if ( this->der == NULL ) {
-				ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
-				this->der = nuevo_arbol;
-			} else{
-				this->der->insertarPorSatisfaccion(psj);
-			}
+			this->izq->insertarPorSatisfaccion(psj);
+		}
+	} else {
+		if ( this->der == NULL ) {
+			this->der = this->nuevoNodo(psj);
+		} else {
+			this->der->insertarPorSatisfaccion(psj);
 		}
 	}
-	
 }
 /*
 void ArbolBusqueda::insertarPorSatisfaccion_aux(anodo arbol, anodo e) {

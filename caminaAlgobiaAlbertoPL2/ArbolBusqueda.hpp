@@ -13,6 +13,7 @@ public:
 	ArbolBusqueda* getDer();
 	ArbolBusqueda* getIzq();
 	Pasajero* getRaiz();
+	ArbolBusqueda* nuevoNodo(Pasajero* psj);
 	
 	void insertarPorSatisfaccion(Pasajero* psj);
 	int calcularNumeroNodos();
