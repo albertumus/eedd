@@ -24,6 +24,10 @@ Pasajero* ArbolBusqueda::getRaiz() {
 	return valor;
 }
 
+bool ArbolBusqueda::hoja() {
+	return this->izq == NULL && this->der == NULL;
+}
+
 ArbolBusqueda* ArbolBusqueda::nuevoNodo(Pasajero* psj) {
 	ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
 	return nuevo_arbol;
@@ -44,27 +48,6 @@ void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* psj) {
 		}
 	}
 }
-/*
-void ArbolBusqueda::insertarPorSatisfaccion_aux(anodo arbol, anodo e) {
-	if ( arbol == NULL ) {
-		arbol = e;
-	} else {
-		if ( e->valor->getSatisfaccion() < arbol->valor->getSatisfaccion() ) {
-			if ( arbol->izq == NULL ) {
-				arbol->izq = e;
-			} else {
-				insertarPorSatisfaccion_aux(arbol->izq, e);
-			}
-		} else {
-			if ( arbol->der == NULL ) {
-				arbol->der = e;
-			} else{
-				insertarPorSatisfaccion_aux(arbol->der, e);
-			}
-		}
-	}
-}
-*/
 
 int ArbolBusqueda::calcularNumeroNodos() {
 	return this->numeroNodos() -1;

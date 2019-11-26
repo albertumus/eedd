@@ -13,6 +13,8 @@ public:
 	ArbolBusqueda* getDer();
 	ArbolBusqueda* getIzq();
 	Pasajero* getRaiz();
+	
+	bool hoja();
 	ArbolBusqueda* nuevoNodo(Pasajero* psj);
 	
 	void insertarPorSatisfaccion(Pasajero* psj);

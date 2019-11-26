@@ -74,6 +74,14 @@ void Test::test_to_pass() {
 	assert(arbol_test_inserccion->calcularNumeroNodos() ==3);
 	assert(arbol_test_inserccion->getIzq()->getDer()->getRaiz()->getIdentificador() == 3);
 	
+	// Test 'hojas'
+	ArbolBusqueda* arbol_test_hoja = new ArbolBusqueda(pasajero_nulo_test);
+	assert(arbol_test_hoja->hoja() == true);
+	arbol_test_hoja->insertarPorSatisfaccion(pasajero_test);
+	assert(arbol_test_hoja->hoja() == false);
+	
+	// Test 'numeroHojas'
+	
 }
 
 Test::~Test()
