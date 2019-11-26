@@ -28,6 +28,19 @@ bool ArbolBusqueda::hoja() {
 	return this->izq == NULL && this->der == NULL;
 }
 
+int ArbolBusqueda::numeroHojas() {
+	if ( this == NULL ) {
+		return 0;
+	} else {
+		if ( this->hoja() ) {
+			return 1 + this->izq->numeroHojas() + this->der->numeroHojas();
+		} else {
+			return this->izq->numeroHojas() + this->der->numeroHojas();
+		}
+		
+	}
+}
+
 ArbolBusqueda* ArbolBusqueda::nuevoNodo(Pasajero* psj) {
 	ArbolBusqueda* nuevo_arbol = new ArbolBusqueda(psj);
 	return nuevo_arbol;

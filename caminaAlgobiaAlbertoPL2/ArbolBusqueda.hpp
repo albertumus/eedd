@@ -15,6 +15,7 @@ public:
 	Pasajero* getRaiz();
 	
 	bool hoja();
+	int numeroHojas();
 	ArbolBusqueda* nuevoNodo(Pasajero* psj);
 	
 	void insertarPorSatisfaccion(Pasajero* psj);

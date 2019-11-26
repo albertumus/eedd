@@ -81,7 +81,11 @@ void Test::test_to_pass() {
 	assert(arbol_test_hoja->hoja() == false);
 	
 	// Test 'numeroHojas'
-	
+	arbol_test_hoja->insertarPorSatisfaccion(pasajero_test_2);
+	assert(arbol_test_hoja->calcularNumeroNodos() == 2);
+	assert(arbol_test_hoja->numeroHojas() == 2);
+	arbol_test_hoja->insertarPorSatisfaccion(pasajero_test_3);
+	assert(arbol_test_hoja->numeroHojas() == 2);
 }
 
 Test::~Test()
