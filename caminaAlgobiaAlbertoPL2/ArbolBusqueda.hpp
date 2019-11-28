@@ -17,17 +17,22 @@ public:
 	bool hoja();
 	int numeroHojas();
 	ArbolBusqueda* nuevoNodo(Pasajero* psj);
+	int altura();
 	
 	void insertarPorSatisfaccion(Pasajero* psj);
-	int calcularNumeroNodos();
+	int calcularNumeroDePasajeros();
+	int numeroNodos();
 	
+	void preOrden();
+	void inOrden();
+	void postOrden();
+	
+	void verArbol(int n);
 
 private:
 	Pasajero* valor;
 	ArbolBusqueda* izq;
 	ArbolBusqueda* der;
-	
-	int numeroNodos();
 };
 
 #endif // ARBOLBUSQUEDA_HPP

@@ -10,6 +10,7 @@ public:
 	~Cola();
 	
 	void insertar(Pasajero* v);
+	void insertarPorId(Pasajero* v);
 	int eliminar();
 	void mostrar();
 	void sleepcp(int milliseconds);

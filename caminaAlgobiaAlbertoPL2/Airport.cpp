@@ -169,19 +169,19 @@ void Airport::comprobarBoxFinalizado()
 	
 	if (box1.getOcupado() && box1.getValor()->calcularHoraSalida() == t )
 	{
-		colaFinal.insertar( box1.getValor() );
+		colaFinal.insertarPorId( box1.getValor() );
 		box1.vaciarBox();
 	}
 	
 	if (box2.getOcupado() && box2.getValor()->calcularHoraSalida() == t )
 	{
-		colaFinal.insertar( box2.getValor() );
+		colaFinal.insertarPorId( box2.getValor() );
 		box2.vaciarBox();
 	}
 	
 	if ( box3.getOcupado() && box3.getValor()->calcularHoraSalida() == t )
 	{
-		colaFinal.insertar( box3.getValor() );
+		colaFinal.insertarPorId( box3.getValor() );
 		box3.vaciarBox();
 	}
 

@@ -190,6 +190,30 @@ void Cola::setearSatisfaccion(double t) {
 	
 }
 
+void Cola::insertarPorId(Pasajero* p)
+{
+	pnodo nuevoPasajero;
+	pnodo aux = primero;
+    nuevoPasajero = new NodoCola(p);
+	if(this->longitudCola() == 0){
+		primero = nuevoPasajero; 
+		ultimo = nuevoPasajero;
+	}else if (primero->valor->getIdentificador() > nuevoPasajero->valor->getIdentificador()){
+		nuevoPasajero->siguiente = primero;
+		primero = nuevoPasajero;
+	}else if (ultimo->valor->getIdentificador() < nuevoPasajero->valor->getIdentificador()){ //optimización, evitas recorrido innecesario
+		ultimo->siguiente = nuevoPasajero;
+		ultimo = nuevoPasajero;
+	}else{
+		while(aux->siguiente->valor->getIdentificador() < nuevoPasajero->valor->getIdentificador())
+		{
+			aux = aux->siguiente;
+		}
+		nuevoPasajero->siguiente = aux->siguiente;
+		aux->siguiente = nuevoPasajero;
+	}
+}
+
 Cola::~Cola()
 /*
  * Destructor de la cola 

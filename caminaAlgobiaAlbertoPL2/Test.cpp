@@ -49,29 +49,29 @@ void Test::test_to_pass() {
 	assert(arbol_test->getRaiz()->getSatisfaccion() == 0);
 	
 	// Test 'numeroNodos' 
-	assert(arbol_test->calcularNumeroNodos() == 0);
+	assert(arbol_test->calcularNumeroDePasajeros() == 0);
 	ArbolBusqueda* r1 = new ArbolBusqueda(pasajero_test_2);
 	arbol_test->setDer(r1);
-	assert(arbol_test->calcularNumeroNodos() ==1);
+	assert(arbol_test->calcularNumeroDePasajeros() ==1);
 	ArbolBusqueda* r2 = new ArbolBusqueda(pasajero_test_3);
 	arbol_test->setDer(r2);
-	assert(arbol_test->calcularNumeroNodos() ==1);
+	assert(arbol_test->calcularNumeroDePasajeros() ==1);
 	arbol_test->setIzq(r1);
-	assert(arbol_test->calcularNumeroNodos() ==2);
+	assert(arbol_test->calcularNumeroDePasajeros() ==2);
 	
 	// Test 'insertarPorSatisfaccion'
 	ArbolBusqueda* arbol_test_inserccion = new ArbolBusqueda(pasajero_nulo_test);
 	assert (pasajero_test->getSatisfaccion() == -19.5);
 	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test);
-	assert(arbol_test_inserccion->calcularNumeroNodos() == 1);
+	assert(arbol_test_inserccion->calcularNumeroDePasajeros() == 1);
 	assert(arbol_test_inserccion->getIzq()->getRaiz()->getSatisfaccion() == -19.5);
 	assert (pasajero_test_2->getSatisfaccion() == 0.5);
 	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test_2);
-	assert(arbol_test_inserccion->calcularNumeroNodos() ==2);
+	assert(arbol_test_inserccion->calcularNumeroDePasajeros() ==2);
 	assert(arbol_test_inserccion->getDer()->getRaiz()->getIdentificador() == 2);
 	assert (pasajero_test_3->getSatisfaccion() == -9.5);
 	arbol_test_inserccion->insertarPorSatisfaccion(pasajero_test_3);
-	assert(arbol_test_inserccion->calcularNumeroNodos() ==3);
+	assert(arbol_test_inserccion->calcularNumeroDePasajeros() ==3);
 	assert(arbol_test_inserccion->getIzq()->getDer()->getRaiz()->getIdentificador() == 3);
 	
 	// Test 'hojas'
@@ -82,10 +82,17 @@ void Test::test_to_pass() {
 	
 	// Test 'numeroHojas'
 	arbol_test_hoja->insertarPorSatisfaccion(pasajero_test_2);
-	assert(arbol_test_hoja->calcularNumeroNodos() == 2);
+	assert(arbol_test_hoja->calcularNumeroDePasajeros() == 2);
 	assert(arbol_test_hoja->numeroHojas() == 2);
 	arbol_test_hoja->insertarPorSatisfaccion(pasajero_test_3);
 	assert(arbol_test_hoja->numeroHojas() == 2);
+	
+	// Test 'altura'
+	ArbolBusqueda* arbol_test_altura = new ArbolBusqueda(pasajero_nulo_test);
+	arbol_test_altura->insertarPorSatisfaccion(pasajero_test);
+	arbol_test_altura->insertarPorSatisfaccion(pasajero_test_2);
+	arbol_test_altura->insertarPorSatisfaccion(pasajero_test_3);
+	assert(arbol_test_altura->altura() == 3);
 }
 
 Test::~Test()

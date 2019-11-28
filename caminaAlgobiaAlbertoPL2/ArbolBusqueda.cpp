@@ -62,7 +62,7 @@ void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* psj) {
 	}
 }
 
-int ArbolBusqueda::calcularNumeroNodos() {
+int ArbolBusqueda::calcularNumeroDePasajeros() {
 	return this->numeroNodos() -1;
 }
 
@@ -72,6 +72,69 @@ int ArbolBusqueda::numeroNodos() {
 	} else {
 		return 1 + izq->numeroNodos() + der->numeroNodos();
 	}
+}
+
+int ArbolBusqueda::altura() {
+
+	if(this != NULL){
+		if(this->izq == NULL){
+			if(this->der == NULL){
+				return 0;
+			}else{
+				return 1 + this->der->altura();
+			}
+		}else{
+			if(this->der == NULL){
+				return 1 + this->izq->altura();
+			}else{
+				return 1 + max(this->izq->altura(), this->der->altura());
+			}
+		}
+	}
+}
+
+void ArbolBusqueda::preOrden()
+{
+     if(this!=NULL)
+     {
+          cout << this->getRaiz()->getIdentificador() << " ";
+          this->izq->preOrden();
+          this->der->preOrden();
+     }
+}
+
+void ArbolBusqueda::inOrden()
+{
+     if(this!=NULL)
+     {
+          this->izq->inOrden();
+          cout << this->getRaiz()->getIdentificador() << " ";
+          this->der->inOrden();
+     }
+}
+
+void ArbolBusqueda::postOrden()
+{
+     if(this!=NULL)
+     {
+          this->izq->postOrden();
+          this->der->postOrden();
+          cout << this->getRaiz()->getIdentificador() << " ";
+     }
+}
+
+void ArbolBusqueda::verArbol(int n)
+{
+     if(this==NULL)
+          return;
+     this->der->verArbol(n+1);
+
+     for(int i=0; i<n; i++)
+         cout<<"   ";
+
+     cout<< this->getRaiz()->getIdentificador() <<endl;
+
+     this->izq->verArbol(n+1);
 }
 
 ArbolBusqueda::~ArbolBusqueda()
