@@ -1,4 +1,5 @@
-#include "ArbolBusqueda.hpp"clTabCtrl
+#include "ArbolBusqueda.hpp"
+#include <cstdio>
 
 ArbolBusqueda::ArbolBusqueda(Pasajero* psj, ArbolBusqueda* i, ArbolBusqueda* d)
 {
@@ -24,6 +25,46 @@ Pasajero* ArbolBusqueda::getRaiz() {
 	return valor;
 }
 
+Pasajero* ArbolBusqueda::satisfaccionMaxima()
+{
+	if (this) {
+		if (!this->der) {
+			return this->getRaiz();
+		} else {
+			return this->getDer()->satisfaccionMaxima();
+		}
+	}
+}
+
+Pasajero* ArbolBusqueda::satisfaccionMinima()
+{
+	if (this) {
+		if (!this->izq) {
+			return this->getRaiz();
+		} else {
+			return this->getIzq()->satisfaccionMinima();
+		}
+	}
+}
+
+float ArbolBusqueda::calcularSatisfaccionMedia() {
+	float sum = this->sumatorioSatisfaccionesPasajero();
+	int len = this->calcularNumeroDePasajeros();
+	cout << "La len es " << len;
+	cout << "El sum es ";
+	cout << sum;
+	return sum/len;
+}
+
+float ArbolBusqueda::sumatorioSatisfaccionesPasajero()
+{
+	if (this) {
+		return this->getRaiz()->getSatisfaccion() + this->getDer()->sumatorioSatisfaccionesPasajero() + this->getIzq()->sumatorioSatisfaccionesPasajero();
+	} else {
+		return 0;
+	}
+}
+
 bool ArbolBusqueda::hoja() {
 	return this->izq == NULL && this->der == NULL;
 }
@@ -47,7 +88,7 @@ ArbolBusqueda* ArbolBusqueda::nuevoNodo(Pasajero* psj) {
 }
 
 void ArbolBusqueda::insertarPorSatisfaccion(Pasajero* psj) {	
-	if ( psj->getSatisfaccion() < this->valor->getSatisfaccion() ) {
+	if ( psj->getSatisfaccion() <= this->valor->getSatisfaccion() ) {
 		if ( this->izq == NULL ) {
 			this->izq = this->nuevoNodo(psj);
 		} else {
@@ -132,7 +173,7 @@ void ArbolBusqueda::verArbol(int n)
      for(int i=0; i<n; i++)
          cout<<"   ";
 
-     cout<< this->getRaiz()->getIdentificador() <<endl;
+     cout<< this->getRaiz()->getIdentificador() << " | " << this->getRaiz()->getSatisfaccion() <<endl;
 
      this->izq->verArbol(n+1);
 }

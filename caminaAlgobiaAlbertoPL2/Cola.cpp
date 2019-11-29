@@ -131,6 +131,11 @@ Pasajero* Cola::getPrimero()
   return primero->valor;
 }
 
+Pasajero* Cola::getUltimo()
+{
+	return ultimo->valor;
+}
+
 void Cola::borrarDeCola(Pasajero *pp )
 /*
  * Borra de la cola pasada por parámetro el pasajero pasado por parámetro

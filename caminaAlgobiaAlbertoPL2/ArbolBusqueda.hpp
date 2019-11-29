@@ -14,6 +14,10 @@ public:
 	ArbolBusqueda* getIzq();
 	Pasajero* getRaiz();
 	
+	Pasajero* satisfaccionMaxima();
+	Pasajero* satisfaccionMinima();
+	float calcularSatisfaccionMedia();
+	
 	bool hoja();
 	int numeroHojas();
 	ArbolBusqueda* nuevoNodo(Pasajero* psj);
@@ -33,6 +37,8 @@ private:
 	Pasajero* valor;
 	ArbolBusqueda* izq;
 	ArbolBusqueda* der;
+	
+	float sumatorioSatisfaccionesPasajero();
 };
 
 #endif // ARBOLBUSQUEDA_HPP
