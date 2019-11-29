@@ -2,6 +2,7 @@
 #define COLA_HPP
 #include "NodoCola.hpp"
 #include "Box.hpp"
+#include "ArbolBusqueda.hpp"
 
 class Cola
 {
@@ -11,6 +12,7 @@ public:
 	
 	void insertar(Pasajero* v);
 	void insertarPorId(Pasajero* v);
+	void insertarEnArbol(ArbolBusqueda* abb);
 	int eliminar();
 	void mostrar();
 	void sleepcp(int milliseconds);
@@ -25,10 +27,9 @@ public:
 	Pasajero* getUltimo();
 	int calcularTiempoTotalEnAeropuero();
 	void setearSatisfaccion(double t);
-
+		 
 private:
-    pnodo primero, ultimo;
+   pnodo primero, ultimo;
 };
-
 
 #endif // COLA_HPP

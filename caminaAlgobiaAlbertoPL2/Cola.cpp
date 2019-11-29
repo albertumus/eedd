@@ -60,6 +60,17 @@ void Cola::mostrar()
     cout << endl;
 }
 
+void Cola::insertarEnArbol(ArbolBusqueda* abb)
+{
+	pnodo aux = primero;
+    cout << endl;
+    while(aux) {
+        abb->insertarPorSatisfaccion(aux->valor);
+        aux = aux->siguiente;
+    }
+    cout << endl;
+}
+
 int Cola::longitudCola()
 /*
  * Muestra la longitud de la cola
@@ -112,8 +123,6 @@ int Cola::buscarPrioridad()
 {
 	int priodadMax = 0;
     pnodo aux = primero;
-
-	cout << "Este es el nodo auxiliar que guarda el primero de la cola: " << aux << endl;
 
     while(aux) {
         if ( aux->valor->getPrioridad() > priodadMax )

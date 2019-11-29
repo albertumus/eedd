@@ -140,8 +140,7 @@ void Test::test_to_pass() {
 	assert(arbol_max_min_test->satisfaccionMinima() == pasajero_test_8);
 	
 	// Media
-	cout << "La satisfaccion media es " << arbol_max_min_test->calcularSatisfaccionMedia();
-	arbol_max_min_test->verArbol(3);
+	//cout << arbol_max_min_test->calcularSatisfaccionMedia();
 	//assert(arbol_max_min_test->calcularSatisfaccionMedia() == -7.52);
 	
 }

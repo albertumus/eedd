@@ -48,17 +48,15 @@ Pasajero* ArbolBusqueda::satisfaccionMinima()
 }
 
 float ArbolBusqueda::calcularSatisfaccionMedia() {
-	float sum = this->sumatorioSatisfaccionesPasajero();
-	int len = this->calcularNumeroDePasajeros();
-	cout << "La len es " << len;
-	cout << "El sum es ";
-	cout << sum;
-	return sum/len;
+	cout << this->sumatorioSatisfaccionesPasajero();
+	cout << this->calcularNumeroDePasajeros();
+	return this->sumatorioSatisfaccionesPasajero()/this->calcularNumeroDePasajeros();
 }
 
 float ArbolBusqueda::sumatorioSatisfaccionesPasajero()
 {
 	if (this) {
+		cout << endl << "Datos: " << this->getRaiz()->getIdentificador() << " | " << this->getRaiz()->getSatisfaccion() << endl;
 		return this->getRaiz()->getSatisfaccion() + this->getDer()->sumatorioSatisfaccionesPasajero() + this->getIzq()->sumatorioSatisfaccionesPasajero();
 	} else {
 		return 0;
@@ -138,7 +136,8 @@ void ArbolBusqueda::preOrden()
 {
      if(this!=NULL)
      {
-          cout << this->getRaiz()->getIdentificador() << " ";
+		  if ( this->getRaiz()->getIdentificador() )
+			this->getRaiz()->mostrarPasajero();
           this->izq->preOrden();
           this->der->preOrden();
      }
@@ -149,7 +148,8 @@ void ArbolBusqueda::inOrden()
      if(this!=NULL)
      {
           this->izq->inOrden();
-          cout << this->getRaiz()->getIdentificador() << " ";
+		  if ( this->getRaiz()->getIdentificador() )
+			this->getRaiz()->mostrarPasajero();
           this->der->inOrden();
      }
 }
@@ -160,7 +160,8 @@ void ArbolBusqueda::postOrden()
      {
           this->izq->postOrden();
           this->der->postOrden();
-          cout << this->getRaiz()->getIdentificador() << " ";
+		  if ( !this->getRaiz()->getIdentificador() )
+			this->getRaiz()->mostrarPasajero();
      }
 }
 

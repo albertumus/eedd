@@ -98,11 +98,71 @@ void Airport::gestionarAeropuerto()
 
 	}
 	
-	cout << endl << "EL TIEMPO FINAL DEL AEROPUERTO: " << calcularTiempoMedioAeropuerto();
-	
+	float tiempoFinalAeropuerto = calcularTiempoMedioAeropuerto();
+	cout << endl << "EL TIEMPO FINAL DEL AEROPUERTO: " << tiempoFinalAeropuerto  << endl;
+	cout << "###################################################" << endl;
 	int a;
 	cin >> a;
 
+	cout << endl << "### Practica Arboles ###" << endl;
+	cout << "Orden de la cola de gente finalizada " << endl;
+	colaFinal.setearSatisfaccion(tiempoFinalAeropuerto );
+	colaFinal.mostrar();
+	cout << endl << "###################################################" << endl;
+	
+
+	Pasajero* pasajero_nulo = new Pasajero(0,0,0,0);
+	pasajero_nulo->setSatisfaccion(0);
+	ArbolBusqueda* arbol_principal = new ArbolBusqueda(pasajero_nulo);
+	colaFinal.insertarEnArbol(arbol_principal);
+	arbol_principal->verArbol(4);
+	
+	// Ejercicio 1 - Media
+	cout << endl << "###################################################" << endl;
+	cout << "La satisfaccion media de los pasajeros es " << arbol_principal->calcularSatisfaccionMedia();
+	cout << endl << "###################################################" << endl;
+	
+	// Ejercicio 2 - Minimo
+	cout << endl << "###################################################" << endl;
+	cout << "El pasajero minimo es ";
+	arbol_principal->satisfaccionMinima()->mostrarPasajero();
+	cout << endl << "###################################################" << endl;
+	
+	// Ejercicio 2 - Maximo
+	cout << endl << "###################################################" << endl;
+	cout << "El pasajero maximo es ";
+	arbol_principal->satisfaccionMaxima()->mostrarPasajero();
+	cout << endl << "###################################################" << endl;
+	
+	// Ejercicio 3 - max media de menor a mayor
+	cout << endl << "###################################################" << endl;
+	cout << "Los pasajeros con un nivel de satisfaccion mayor que la media son ";
+	cout << endl;
+	arbol_principal->getDer()->verArbol(4);
+	cout << endl;
+	arbol_principal->getDer()->inOrden();
+	cout << endl << "###################################################" << endl;
+	
+	// Ejercicio 4 - datos pasajero negativo en preorden
+	cout << endl << "###################################################" << endl;
+	cout << "Los pasajeros con una satisfaccion negativa en preorden son";
+	cout << endl;
+	arbol_principal->getIzq()->verArbol(4);
+	cout << endl;
+	arbol_principal->getIzq()->preOrden();
+	cout << endl << "###################################################" << endl;
+
+	// Ejercicio 5 - datos de pasajero en orden
+	cout << endl << "###################################################" << endl;
+	cout << "Los pasajeros de menor a mayor ";
+	cout << endl;
+	arbol_principal->verArbol(4);
+	cout << endl;
+	arbol_principal->inOrden();
+	cout << endl << "###################################################" << endl;
+
+	int b;
+	cin >> b;
 
 }
 

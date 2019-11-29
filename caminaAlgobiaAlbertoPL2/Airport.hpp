@@ -2,6 +2,7 @@
 #define AIRPORT_HPP
 #include "Cola.hpp"
 #include "Box.hpp"
+#include "ArbolBusqueda.hpp"
 
 class Airport
 {
