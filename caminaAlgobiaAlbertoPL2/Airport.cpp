@@ -115,6 +115,7 @@ void Airport::gestionarAeropuerto()
 	pasajero_nulo->setSatisfaccion(0);
 	ArbolBusqueda* arbol_principal = new ArbolBusqueda(pasajero_nulo);
 	colaFinal.insertarEnArbol(arbol_principal);
+	cout << endl;
 	arbol_principal->verArbol(4);
 	
 	// Ejercicio 1 - Media
@@ -137,8 +138,8 @@ void Airport::gestionarAeropuerto()
 	// Ejercicio 3 - max media de menor a mayor
 	cout << endl << "###################################################" << endl;
 	cout << "Los pasajeros con un nivel de satisfaccion mayor que la media son ";
-	cout << endl;
-	arbol_principal->getDer()->verArbol(4);
+	cout << endl << endl;
+	arbol_principal->getDer()->verArbol(10);
 	cout << endl;
 	arbol_principal->getDer()->inOrden();
 	cout << endl << "###################################################" << endl;
@@ -146,8 +147,8 @@ void Airport::gestionarAeropuerto()
 	// Ejercicio 4 - datos pasajero negativo en preorden
 	cout << endl << "###################################################" << endl;
 	cout << "Los pasajeros con una satisfaccion negativa en preorden son";
-	cout << endl;
-	arbol_principal->getIzq()->verArbol(4);
+	cout << endl << endl;
+	arbol_principal->getIzq()->verArbol(10);
 	cout << endl;
 	arbol_principal->getIzq()->preOrden();
 	cout << endl << "###################################################" << endl;
@@ -155,8 +156,8 @@ void Airport::gestionarAeropuerto()
 	// Ejercicio 5 - datos de pasajero en orden
 	cout << endl << "###################################################" << endl;
 	cout << "Los pasajeros de menor a mayor ";
-	cout << endl;
-	arbol_principal->verArbol(4);
+	cout << endl << endl;
+	arbol_principal->verArbol(10);
 	cout << endl;
 	arbol_principal->inOrden();
 	cout << endl << "###################################################" << endl;
